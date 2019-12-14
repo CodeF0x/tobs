@@ -1,0 +1,27 @@
+{
+  "name": "tobs",
+  "version": "1.0.0",
+  "description": "Tobs is a customizable cross-platform system health monitor app.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp build && electron ./build/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeF0x/tobs.git"
+  },
+  "author": "Tobias \"CodeF0x\" Oettl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeF0x/tobs/issues"
+  },
+  "homepage": "https://github.com/CodeF0x/tobs#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "electron": "^7.1.5"
+  }
+}
