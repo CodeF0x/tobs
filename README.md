@@ -1,2 +1,21 @@
-# tobs
-System Monitor
+### Tobs is a customizable cross-platform system monitor app.
+
+## Features
+
+| Planned Feature | Implemented | Working as intended |
+| --------------- | ----------- | ------------------- |
+| CPU usage       | ❌          | ❌                  |
+| RAM usage       | ❌          | ❌                  |
+| GPU usage       | ❌          | ❌                  |
+| disk usage      | ❌          | ❌                  |
+| network usage   | ❌          | ❌                  |
+
+## Customizable options
+
+| Preference                                | Implemented | Working as intended |
+| ----------------------------------------- | ----------- | ------------------- |
+| alignment of charts via drag & drop       | ❌          | ❌                  |
+| custom refreshrate of charts              | ❌          | ❌                  |
+| measurements in GiB or GB                 | ❌          | ❌                  |
+| set dark or light mode on the fly         | ❌          | ❌                  |
+| self updating or atleast update assistent | ❌          | ❌                  |
