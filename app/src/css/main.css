@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+aside {
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 60px;
+  font-size: 40px;
+  position: fixed;
+  left: 0;
+}
+
+#settings-button {
+  padding-bottom: 10px;
+}
+
+#settings-button:hover {
+  cursor: pointer;
+}
+
+#main {
+  float: right;
+  width: calc(100% - 60px);
+}
+
+/** todo have a look later regarding responsiveness of containers */
+@media (min-width: 1600px) {
+  app-container:nth-child(1n) {
+    float: right;
+    width: 45%;
+  }
+}

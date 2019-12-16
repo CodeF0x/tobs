@@ -4,9 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self'; style-src 'unsafe-inline' 'self'; img-src 'self' data:"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/dark.css" id="color-preference" />
+    <link rel="stylesheet" href="../lib/css/all.min.css" />
+    <link rel="stylesheet" href="../lib/css/dragula.min.css" />
+    <script src="js/index.js" type="module"></script>
+    <script src="../lib/js/dragula.min.js"></script>
+    <title>Tobs</title>
   </head>
   <body>
-    Working!
+    <aside>
+      <i id="settings-button" class="fas fa-cog"></i>
+    </aside>
+    <main id="main">
+      <app-container></app-container>
+      <app-container></app-container>
+      <app-container></app-container>
+      <app-container></app-container>
+      <app-container></app-container>
+    </main>
   </body>
 </html>

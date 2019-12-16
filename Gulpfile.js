@@ -6,14 +6,22 @@ gulp.task('compile', () => {
     .src(['app/**/*.ts'])
     .pipe(
       ts({
-        noImplicitAny: true
+        noImplicitAny: true,
+        moduleResolution: 'node',
+        module: 'es6',
+        target: 'es6'
       })
     )
     .pipe(gulp.dest('build/'));
 });
 
+// Only copy files that are NOT .ts or .js files
 gulp.task('copy', () => {
-  const filesToMove = ['app/src/index.html'];
+  const filesToMove = [
+    'app/src/index.html',
+    'app/lib/**/*',
+    'app/src/css/**/*'
+  ];
   return gulp.src(filesToMove, { base: './app' }).pipe(gulp.dest('build/'));
 });
 
