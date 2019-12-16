@@ -1,5 +1,7 @@
 ### Tobs is a customizable cross-platform system monitor app.
 
+### This README will get extended step by step once there's actually something to talk about :).
+
 ## Features
 
 | Planned Feature | Implemented | Working as intended |
