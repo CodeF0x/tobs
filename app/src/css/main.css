@@ -29,8 +29,21 @@ aside {
 
 /** todo have a look later regarding responsiveness of containers */
 @media (min-width: 1600px) {
-  app-container:nth-child(1n) {
-    float: right;
-    width: 45%;
+  #main {
+    display: gird;
+    grid-template-rows: 33%;
   }
+}
+
+.dummy {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+}
+
+.container {
+  background: red;
+  height: 300px;
+  width: 95%;
+  margin: 20px auto;
 }

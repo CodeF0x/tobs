@@ -1,7 +1,11 @@
 const { app, BrowserWindow } = require('electron');
 
 app.on('ready', () => {
-  const window = new BrowserWindow();
+  const window = new BrowserWindow({
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
   window.loadFile('src/index.html');
 });
 

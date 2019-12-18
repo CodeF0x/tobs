@@ -1,9 +1,3 @@
-import registerComponents from './register-components.js';
-import * as Drake from 'dragula';
-
-registerComponents();
-
-const dragNDropElements: Element[] = [
-  ...document.getElementsByName('app-container')
-];
-Drake(dragNDropElements);
+// Because Typescript and dragula both refuse to work together, good ol' require
+const dragula = require('dragula');
+dragula([...document.getElementsByClassName('container')]);
