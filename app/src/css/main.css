@@ -32,6 +32,7 @@ aside {
   #main {
     display: gird;
     grid-template-rows: 33%;
+    grid-template-columns: 45% 45%;
   }
 }
 
@@ -42,8 +43,9 @@ aside {
 }
 
 .container {
-  background: red;
   height: 300px;
   width: 95%;
   margin: 20px auto;
+  border-radius: 25px;
+  border: 1px solid black;
 }
