@@ -30,9 +30,9 @@ aside {
 /** todo have a look later regarding responsiveness of containers */
 @media (min-width: 1600px) {
   #main {
-    display: gird;
-    grid-template-rows: 33%;
-    grid-template-columns: 45% 45%;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -43,7 +43,7 @@ aside {
 }
 
 .container {
-  height: 300px;
+  height: 900px;
   width: 95%;
   margin: 20px auto;
   border-radius: 25px;
