@@ -43,9 +43,9 @@ aside {
 }
 
 .container {
-  height: 900px;
+  height: 450px;
   width: 95%;
   margin: 20px auto;
-  border-radius: 25px;
+  border-radius: 10px;
   border: 1px solid black;
 }
