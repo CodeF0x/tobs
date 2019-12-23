@@ -1,7 +1,11 @@
-import { app, BrowserWindow } from 'electron';
+const { app, BrowserWindow } = require('electron');
 
 app.on('ready', () => {
-  const window: BrowserWindow = new BrowserWindow();
+  const window = new BrowserWindow({
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
   window.loadFile('src/index.html');
 });
 
