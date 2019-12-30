@@ -8,7 +8,7 @@ dragula([...document.getElementsByClassName('container')]).on(
     source: HTMLElement,
     sibling: HTMLElement
   ) => {
-    const toSwap: HTMLElement = target.querySelector('.dummy');
+    const toSwap = target.querySelectorAll('.container-outer')[1];
     source.appendChild(toSwap);
   }
 );
