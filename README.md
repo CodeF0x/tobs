@@ -16,7 +16,7 @@
 
 | Preference                                | Implemented | Working as intended / Tested |
 | ----------------------------------------- | ----------- | ---------------------------- |
-| alignment of charts via drag & drop       | ❌          | ❌                           |
+| alignment of charts via drag & drop       | ✔️          | ❌                           |
 | custom refreshrate of charts              | ❌          | ❌                           |
 | measurements in GiB or GB                 | ❌          | ❌                           |
 | set dark or light mode on the fly         | ❌          | ❌                           |
