@@ -1,18 +1,21 @@
-import { containerState, chartPosition } from './types';
+import { chartPosition } from './types';
 
+/**
+ * Manges persistent drag and drop of charts.
+ */
 class Alignment {
   public static nodes: Array<Element> = [
     ...document.getElementsByClassName('container')
   ];
 
-  private static state: containerState = JSON.parse(
+  private static state: { [index: string]: any } = JSON.parse(
     localStorage.getItem('state')
   );
 
   /**
-   * Saves the containers alignment
+   * Saves the alignment of the containers.
    */
-  public static save() {
+  public static save(): void {
     const nodes = this.nodes;
 
     const state: { [index: string]: any } = {};
@@ -28,8 +31,23 @@ class Alignment {
     localStorage.setItem('state', JSON.stringify(state));
   }
 
-  public static loggy() {
-    console.log(JSON.parse(localStorage.getItem('state')));
+  /**
+   * Places the containers at the proper position at app start.
+   */
+  public static init(): void {
+    const state = this.state;
+
+    for (const chart in state) {
+      console.log(state[chart]);
+      const container: Element = document.getElementById(
+        state[chart].containerId
+      );
+      const chartContainer: Element = document.getElementById(
+        state[chart].chartId
+      );
+
+      container.appendChild(chartContainer);
+    }
   }
 }
 
