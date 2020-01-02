@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const toSwap = target.querySelectorAll('.container-outer')[1];
       source.appendChild(toSwap);
       Alignment.save();
-      Alignment.loggy();
     }
   );
 });
