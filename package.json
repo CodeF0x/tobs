@@ -4,7 +4,7 @@
   "description": "Tobs is a customizable cross-platform system health monitor app.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp build && electron ./build/main.js"
+    "start": "electron ./app/main.js"
   },
   "repository": {
     "type": "git",

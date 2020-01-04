@@ -1,3 +1,7 @@
+/**
+ * This file currently does nothing and is a left-over that will be rewritten once a pipeline is needed.
+ */
+
 const gulp = require('gulp');
 const ts = require('gulp-typescript');
 
