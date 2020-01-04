@@ -6,12 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dragula = require('dragula');
   dragula([...document.getElementsByClassName('container')]).on(
     'drop',
-    (
-      el: HTMLElement,
-      target: HTMLElement,
-      source: HTMLElement,
-      sibling: HTMLElement
-    ) => {
+    (el, target, source, sibling) => {
       const toSwap = target.querySelectorAll('.container-outer')[1];
       source.appendChild(toSwap);
       Alignment.save();
