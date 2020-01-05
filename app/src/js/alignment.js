@@ -2,15 +2,15 @@
  * Manges persistent drag and drop of charts.
  */
 class Alignment {
-  static nodes = [...document.getElementsByClassName('container')];
+  static _nodes_ = [...document.getElementsByClassName('container')];
 
-  static state = JSON.parse(localStorage.getItem('state'));
+  static _state = JSON.parse(localStorage.getItem('state'));
 
   /**
    * Saves the alignment of the containers.
    */
   static save() {
-    const nodes = this.nodes;
+    const nodes = this._nodes;
 
     const state = {};
 
@@ -29,7 +29,7 @@ class Alignment {
    * Places the containers at the proper position at app start.
    */
   static init() {
-    const state = this.state;
+    const state = this._state;
 
     for (const chart in state) {
       const container = document.getElementById(state[chart].containerId);
