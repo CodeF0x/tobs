@@ -49,6 +49,14 @@ aside {
   height: 100%;
 }
 
+.container-inner {
+  display: flex;
+}
+
+.container-inner > div {
+  margin: 5px;
+}
+
 canvas {
   height: 90%;
   width: 100%;

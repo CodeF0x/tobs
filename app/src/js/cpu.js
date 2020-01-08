@@ -15,10 +15,24 @@ class CPU {
      */
     this._sys.currentLoad();
 
+    let cpuInfo = null;
+
+    this._sys
+      .cpu()
+      .then(info => {
+        const cpuManufacturer = info.manufacturer;
+        const cpuBrand = info.brand;
+        document.getElementById(
+          'headline-cpu'
+        ).innerText = `${cpuManufacturer} ${cpuBrand}`;
+      })
+      .catch(err => console.error(err));
+
     this._ctx = this._canvasElement.getContext('2d');
     this._chart = new Chart(this._ctx, {
       type: 'line',
       data: {
+        labels: ['0%'],
         datasets: [
           {
             label: 'CPU usage in %',
@@ -53,6 +67,13 @@ class CPU {
                 suggestedMax: 100
               }
             }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                display: false
+              }
+            }
           ]
         },
         tooltips: {
@@ -63,33 +84,39 @@ class CPU {
     this.update();
   }
 
-  async update() {
+  update() {
     setInterval(() => {
-      console.log('running');
-      let newProcent = null;
+      this.updateChart();
+    }, 1000);
 
-      this._sys
-        .currentLoad()
-        .then(data => this.updateChart(data.currentload))
-        .catch(err => console.error(err));
-
-      //this.updateChart(newProcent);
-    }, 1500);
+    this._sys
+      .cpu()
+      .then(info => {
+        document.getElementById('cpu-clock').innerText = info.speed;
+        document.getElementById('cpu-powerclock').innerText = info.speedmax;
+      })
+      .catch(err => console.error(err));
   }
 
-  updateChart(data) {
-    const chart = this._chart;
-    const datasets = chart.data.datasets;
+  updateChart() {
+    this._sys
+      .currentLoad()
+      .then(info => {
+        const data = this._chart.data.datasets[0].data;
 
-    datasets.forEach(dataset => {
-      dataset.data.push(data);
+        if (data.length === 50) {
+          data.shift();
+          this._chart.data.labels.shift();
+        }
 
-      if (dataset.data.length === 30) {
-        dataset.data.shift();
-      }
-    });
+        const percent = info.currentload.toFixed(0);
 
-    this._chart.update();
+        data.push(percent);
+        // Not shown, but chart.js needs it to update the chart properly
+        this._chart.data.labels.push(percent + '%');
+        this._chart.update();
+      })
+      .catch(err => console.error(err));
   }
 }
 
