@@ -10,13 +10,18 @@ class CPU {
   }
 
   init() {
+    /**
+     * To measure cpu load, a period of time is needed (from start of application to end of application)
+     * therefore currentLoad() needs to be called once at startup as a beginning point.
+     */
+    this._sys.currentLoad();
+
     this._ctx = this._canvasElement.getContext('2d');
     this._chart = new Chart(this._ctx, {
       type: 'line',
       data: {
         datasets: [
           {
-            label: '# of Votes',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
@@ -55,9 +60,10 @@ class CPU {
     this.update();
   }
 
-  async update() {
-    console.log(await this._sys.cpu());
-    console.log(await this._sys.cpuCurrentspeed());
+  async update() {}
+
+  updateChart(label, data) {
+    const chart = this._chart;
   }
 }
 
