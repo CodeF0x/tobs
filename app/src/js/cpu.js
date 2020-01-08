@@ -12,9 +12,8 @@ class CPU {
   init() {
     this._ctx = this._canvasElement.getContext('2d');
     this._chart = new Chart(this._ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
         datasets: [
           {
             label: '# of Votes',
@@ -44,7 +43,9 @@ class CPU {
           yAxes: [
             {
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                stepSize: 10,
+                suggestedMax: 100
               }
             }
           ]

@@ -2,7 +2,7 @@
  * Manges persistent drag and drop of charts.
  */
 class Alignment {
-  static _nodes_ = [...document.getElementsByClassName('container')];
+  static _nodes = [...document.getElementsByClassName('container')];
 
   static _state = JSON.parse(localStorage.getItem('state'));
 
