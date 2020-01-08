@@ -1,17 +1,16 @@
 class CPU {
-  _canvasElement = null;
-  _ctx = null;
-  _chart = null;
-  _sys = require('systeminformation');
-
   constructor() {
+    this._canvasElement = null;
+    this._ctx = null;
+    this._chart = null;
+    this._sys = require('systeminformation');
     this._canvasElement = document.getElementById('cpu-chart');
     this.init();
   }
 
   init() {
     /**
-     * To measure cpu load, a period of time is needed (from start of application to end of application)
+     * To measure CPU load, a period of time is needed (from start of application to end of application)
      * therefore currentLoad() needs to be called once at startup as a beginning point.
      */
     this._sys.currentLoad();
@@ -22,7 +21,8 @@ class CPU {
       data: {
         datasets: [
           {
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'CPU usage in %',
+            data: [0],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -54,16 +54,42 @@ class CPU {
               }
             }
           ]
+        },
+        tooltips: {
+          enabled: false
         }
       }
     });
     this.update();
   }
 
-  async update() {}
+  async update() {
+    setInterval(() => {
+      console.log('running');
+      let newProcent = null;
 
-  updateChart(label, data) {
+      this._sys
+        .currentLoad()
+        .then(data => this.updateChart(data.currentload))
+        .catch(err => console.error(err));
+
+      //this.updateChart(newProcent);
+    }, 1500);
+  }
+
+  updateChart(data) {
     const chart = this._chart;
+    const datasets = chart.data.datasets;
+
+    datasets.forEach(dataset => {
+      dataset.data.push(data);
+
+      if (dataset.data.length === 30) {
+        dataset.data.shift();
+      }
+    });
+
+    this._chart.update();
   }
 }
 
