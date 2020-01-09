@@ -25,11 +25,21 @@
     <main id="main">
       <section class="container" id="container-one">
         <section class="container-outer" id="cpu-container">
-          <h3 id="headline-cpu"></h3>
-          <canvas id="cpu-chart"></canvas>
+          <div class="container-headline">
+            <h3 id="headline-cpu"></h3>
+            <span id="cpu-usage"></span>
+          </div>
+          <div class="canvas-container">
+            <canvas id="cpu-chart"></canvas>
+          </div>
           <section class="container-inner">
-            <div>Clock: <span id="cpu-clock"></span> GHz</div>
-            <div>Powerclock: <span id="cpu-powerclock"></span> GHz</div>
+            <div class="block">
+              <div>Clock: <span id="cpu-clock"></span> GHz</div>
+              <div>Powerclock: <span id="cpu-powerclock"></span> GHz</div>
+            </div>
+            <div class="block">
+              <div>Cores: <span id="cpu-cores"></span></div>
+            </div>
           </section>
         </section>
       </section>

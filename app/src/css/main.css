@@ -37,7 +37,6 @@ aside {
 }
 
 .container {
-  height: 450px;
   width: 95%;
   margin: 20px auto;
   padding: 5px;
@@ -49,15 +48,27 @@ aside {
   height: 100%;
 }
 
+.container-headline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container-headline > * {
+  margin: 0 5px;
+}
+
 .container-inner {
   display: flex;
+  flex-direction: row;
 }
 
-.container-inner > div {
-  margin: 5px;
+.block {
+  margin: 10px;
 }
 
-canvas {
-  height: 90%;
+.canvas-container {
+  position: relative;
+  min-height: 400px;
   width: 100%;
 }

@@ -78,7 +78,8 @@ class CPU {
         },
         tooltips: {
           enabled: false
-        }
+        },
+        maintainAspectRatio: false
       }
     });
     this.update();
@@ -94,6 +95,7 @@ class CPU {
       .then(info => {
         document.getElementById('cpu-clock').innerText = info.speed;
         document.getElementById('cpu-powerclock').innerText = info.speedmax;
+        document.getElementById('cpu-cores').innerText = info.cores;
       })
       .catch(err => console.error(err));
   }
@@ -115,6 +117,8 @@ class CPU {
         // Not shown, but chart.js needs it to update the chart properly
         this._chart.data.labels.push(percent + '%');
         this._chart.update();
+
+        document.getElementById('cpu-usage').innerText = `(${percent}%)`;
       })
       .catch(err => console.error(err));
   }
