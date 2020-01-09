@@ -8,6 +8,9 @@ class CPU {
     this.init();
   }
 
+  /**
+   * Does the intial setup of the CPU chart, and other infos.
+   */
   init() {
     /**
      * To measure CPU load, a period of time is needed (from start of application to end of application)
@@ -85,6 +88,9 @@ class CPU {
     this.update();
   }
 
+  /**
+   * Updates infos.
+   */
   update() {
     setInterval(() => {
       this.updateChart();
@@ -100,6 +106,9 @@ class CPU {
       .catch(err => console.error(err));
   }
 
+  /**
+   * Populates and updates the chart.
+   */
   updateChart() {
     this._sys
       .currentLoad()
