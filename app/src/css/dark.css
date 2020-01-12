@@ -3,7 +3,8 @@ body {
 }
 
 aside,
-#main {
+#main,
+#settings {
   background: #272343;
 }
 
