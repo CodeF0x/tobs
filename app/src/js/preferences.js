@@ -45,12 +45,13 @@ class Preferences {
   updateRefreshrate(e) {
     const refreshRate = Number(e.target.value);
 
-    console.log(typeof refreshRate);
     if (refreshRate <= 0) {
-      this.error();
+      console.log('unter null');
+      e.preventDefault();
       return;
-    } else if (!refreshRate.isInteger()) {
-      this.error();
+    } else if (!Number.isInteger(refreshRate)) {
+      console.log('kein int');
+      e.preventDefault();
       return;
     }
   }
