@@ -6,8 +6,12 @@ class Preferences {
     this.preferences = JSON.parse(localStorage.getItem('preferences')) || {};
     this.settings = document.getElementById('settings');
     this.refreshRate = document.getElementById('refresh-rate');
+    this.swal = require('sweetalert2');
 
-    this.refreshRate.addEventListener('change', this.saveSettings.bind(this));
+    this.refreshRate.addEventListener(
+      'keyup',
+      this.updateRefreshrate.bind(this)
+    );
 
     document
       .getElementById('settings-button')
@@ -36,13 +40,38 @@ class Preferences {
   }
 
   /**
+   * Updates custom refreshrate.
+   */
+  updateRefreshrate(e) {
+    const refreshRate = Number(e.target.value);
+
+    console.log(typeof refreshRate);
+    if (refreshRate <= 0) {
+      this.error();
+      return;
+    } else if (!refreshRate.isInteger()) {
+      this.error();
+      return;
+    }
+  }
+
+  /**
    * Saves preferences to local storage.
    */
   saveSettings() {
-    const preferences = {
-      refreshRate: this.refreshRate.value
-    };
+    localStorage.setItem('preferences', JSON.stringify(this.preferences));
+    this.success();
   }
+
+  /**
+   * Shows error message.
+   */
+  error() {}
+
+  /**
+   * Shows success message.
+   */
+  success() {}
 }
 
 export default Preferences;

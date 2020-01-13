@@ -25,5 +25,7 @@
     "systeminformation": "^4.17.3",
     "typescript": "^3.7.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "sweetalert2": "^9.5.4"
+  }
 }
