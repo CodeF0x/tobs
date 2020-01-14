@@ -6,12 +6,15 @@ class Preferences {
     this.preferences = JSON.parse(localStorage.getItem('preferences')) || {};
     this.settings = document.getElementById('settings');
     this.refreshRate = document.getElementById('refresh-rate');
+    this.saveButton = document.getElementById('save-settings');
     this.swal = require('sweetalert2');
 
     this.refreshRate.addEventListener(
       'keyup',
       this.updateRefreshrate.bind(this)
     );
+
+    this.saveButton.addEventListener('click', this.saveSettings.bind(this));
 
     document
       .getElementById('settings-button')
@@ -47,26 +50,52 @@ class Preferences {
     const refreshRate = Number(input.value);
 
     if (refreshRate <= 0 || !Number.isInteger(refreshRate)) {
+      this.disableButton();
       const value = e.target.value;
       input.value = value.substring(0, value.length - 1);
       return;
     }
 
-    this.markButtonAsClickable();
+    if (Number(this.preferences.refreshRate) !== refreshRate) {
+      this.enableButton();
+    } else {
+      this.disableButton();
+    }
   }
 
   /**
    * Saves preferences to local storage.
    */
   saveSettings() {
-    localStorage.setItem('preferences', JSON.stringify(this.preferences));
-    this.success();
+    const preferences = {
+      refreshRate: this.refreshRate.value
+    };
+
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+    this.preferences = JSON.parse(localStorage.getItem('preferences'));
+    this.disableButton();
+    // this.success();
   }
 
   /**
-   * Makes save-settings-button clickable for user.
+   * Enables button.
    */
-  markButtonAsClickable() {}
+  enableButton() {
+    const button = this.saveButton;
+
+    button.classList.remove('disabled');
+    button.removeAttribute('disabled');
+  }
+
+  /**
+   * Disabled button.
+   */
+  disableButton() {
+    const button = this.saveButton;
+
+    button.classList.add('disabled');
+    button.setAttribute('disabled', '');
+  }
 
   /**
    * Shows error message.

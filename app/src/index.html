@@ -92,11 +92,14 @@
         <section class="settings-inner">
           <div>
             <h2>Charts</h2>
-            <label for="refresh-rate">Chart refresh-rate (in seconds)</label
+            <label for="refresh-rate"
+              >Chart refresh-rate (in seconds, no decimals)</label
             ><input type="number" id="refresh-rate" placeholder="10" />
           </div>
-          <button id="save-settings">Save changes</button>
         </section>
+        <button id="save-settings" class="disabled" disabled>
+          Save changes
+        </button>
       </div>
     </main>
   </body>
