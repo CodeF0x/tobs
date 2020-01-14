@@ -43,15 +43,12 @@ class Preferences {
    * Updates custom refreshrate.
    */
   updateRefreshrate(e) {
-    const refreshRate = Number(e.target.value);
+    const input = e.target;
+    const refreshRate = Number(input.value);
 
-    if (refreshRate <= 0) {
-      console.log('unter null');
-      e.preventDefault();
-      return;
-    } else if (!Number.isInteger(refreshRate)) {
-      console.log('kein int');
-      e.preventDefault();
+    if (refreshRate <= 0 || !Number.isInteger(refreshRate)) {
+      const value = e.target.value;
+      input.value = value.substring(0, value.length - 1);
       return;
     }
   }
