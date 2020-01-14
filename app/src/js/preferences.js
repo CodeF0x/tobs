@@ -23,6 +23,8 @@ class Preferences {
     document
       .querySelector('.fas.fa-times')
       .addEventListener('click', this.openSettings.bind(this));
+
+    this.refreshRate.value = this.preferences.refreshRate;
   }
 
   /**
@@ -73,8 +75,9 @@ class Preferences {
 
     localStorage.setItem('preferences', JSON.stringify(preferences));
     this.preferences = JSON.parse(localStorage.getItem('preferences'));
+
     this.disableButton();
-    // this.success();
+    this.success('Okay!', 'Your changes got saved and applied.');
   }
 
   /**
@@ -105,7 +108,14 @@ class Preferences {
   /**
    * Shows success message.
    */
-  success() {}
+  success(title, message) {
+    this.swal.fire({
+      title: title,
+      text: message,
+      icon: 'success',
+      confirmButtonText: 'Got it'
+    });
+  }
 }
 
 export default Preferences;
