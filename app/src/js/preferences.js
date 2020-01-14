@@ -51,6 +51,8 @@ class Preferences {
       input.value = value.substring(0, value.length - 1);
       return;
     }
+
+    this.markButtonAsClickable();
   }
 
   /**
@@ -60,6 +62,11 @@ class Preferences {
     localStorage.setItem('preferences', JSON.stringify(this.preferences));
     this.success();
   }
+
+  /**
+   * Makes save-settings-button clickable for user.
+   */
+  markButtonAsClickable() {}
 
   /**
    * Shows error message.
