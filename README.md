@@ -36,7 +36,7 @@ None, app isn't finished yet.
 
 | Planned Feature | Implemented | Working as intended / Tested |
 | --------------- | ----------- | ---------------------------- |
-| CPU usage       | ❌          | ❌                           |
+| CPU usage       | ✅          | ❌                           |
 | RAM usage       | ❌          | ❌                           |
 | GPU usage       | ❌          | ❌                           |
 | disk usage      | ❌          | ❌                           |
@@ -46,8 +46,8 @@ None, app isn't finished yet.
 
 | Preference                                | Implemented | Working as intended / Tested |
 | ----------------------------------------- | ----------- | ---------------------------- |
-| chart layout via drag & drop              | ✔️          | ❌                           |
-| custom refreshrate of charts              | ❌          | ❌                           |
+| chart layout via drag & drop              | ✅          | ❌                           |
+| custom refreshrate of charts              | ✅          | ❌                           |
 | measurements in GiB or GB                 | ❌          | ❌                           |
 | set dark or light mode on the fly         | ❌          | ❌                           |
 | self updating or atleast update assistent | ❌          | ❌                           |
