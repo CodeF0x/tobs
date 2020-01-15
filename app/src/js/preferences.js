@@ -13,6 +13,10 @@ class Preferences {
       'keyup',
       this.updateRefreshrate.bind(this)
     );
+    this.refreshRate_.addEventListener(
+      'change',
+      this.updateRefreshrate.bind(this)
+    );
 
     this.saveButton_.addEventListener('click', this.saveSettings.bind(this));
 
