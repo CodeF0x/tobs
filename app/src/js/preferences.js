@@ -4,17 +4,17 @@
 class Preferences {
   constructor() {
     this.preferences = JSON.parse(localStorage.getItem('preferences')) || {};
-    this.settings = document.getElementById('settings');
-    this.refreshRate = document.getElementById('refresh-rate');
-    this.saveButton = document.getElementById('save-settings');
-    this.swal = require('sweetalert2');
+    this.settings_ = document.getElementById('settings');
+    this.refreshRate_ = document.getElementById('refresh-rate');
+    this.saveButton_ = document.getElementById('save-settings');
+    this.swal_ = require('sweetalert2');
 
-    this.refreshRate.addEventListener(
+    this.refreshRate_.addEventListener(
       'keyup',
       this.updateRefreshrate.bind(this)
     );
 
-    this.saveButton.addEventListener('click', this.saveSettings.bind(this));
+    this.saveButton_.addEventListener('click', this.saveSettings.bind(this));
 
     document
       .getElementById('settings-button')
@@ -24,14 +24,14 @@ class Preferences {
       .querySelector('.fas.fa-times')
       .addEventListener('click', this.openSettings.bind(this));
 
-    this.refreshRate.value = this.preferences.refreshRate;
+    this.refreshRate_.value = this.preferences.refreshRate;
   }
 
   /**
    * Opens preferences overlay.
    */
   openSettings() {
-    const overlay = this.settings;
+    const overlay = this.settings_;
     const value = window.getComputedStyle(overlay).display;
     let overflow = document.body.style.overflowY;
 
@@ -70,7 +70,7 @@ class Preferences {
    */
   saveSettings() {
     const preferences = {
-      refreshRate: this.refreshRate.value
+      refreshRate: this.refreshRate_.value
     };
 
     localStorage.setItem('preferences', JSON.stringify(preferences));
@@ -84,7 +84,7 @@ class Preferences {
    * Enables button.
    */
   enableButton() {
-    const button = this.saveButton;
+    const button = this.saveButton_;
 
     button.classList.remove('disabled');
     button.removeAttribute('disabled');
@@ -94,7 +94,7 @@ class Preferences {
    * Disabled button.
    */
   disableButton() {
-    const button = this.saveButton;
+    const button = this.saveButton_;
 
     button.classList.add('disabled');
     button.setAttribute('disabled', '');
@@ -112,7 +112,7 @@ class Preferences {
     const { getCurrentWindow } = require('electron').remote;
     const reload = () => getCurrentWindow().reload();
 
-    this.swal.fire({
+    this.swal_.fire({
       title: title,
       text: message,
       icon: 'success',
