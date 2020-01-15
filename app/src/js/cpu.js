@@ -102,9 +102,9 @@ class CPU {
    */
   update() {
     setInterval(() => {
-      document.getElementById('cpu-usage').innerText = `${
+      document.getElementById('cpu-usage').innerText = `(${
         this._newData[this._newData.length - 1]
-      }`;
+      }%)`;
 
       this._sys
         .cpu()

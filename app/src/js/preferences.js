@@ -109,11 +109,15 @@ class Preferences {
    * Shows success message.
    */
   success(title, message) {
+    const { getCurrentWindow } = require('electron').remote;
+    const reload = () => getCurrentWindow().reload();
+
     this.swal.fire({
       title: title,
       text: message,
       icon: 'success',
-      confirmButtonText: 'Got it'
+      confirmButtonText: 'Got it',
+      onAfterClose: reload
     });
   }
 }
