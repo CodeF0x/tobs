@@ -113,16 +113,21 @@ class Preferences {
    * Shows success message.
    */
   success(title, message) {
-    const { getCurrentWindow } = require('electron').remote;
-    const reload = () => getCurrentWindow().reload();
-
     this._swal.fire({
       title: title,
       text: message,
       icon: 'success',
       confirmButtonText: 'Got it',
-      onAfterClose: reload
+      onAfterClose: this.reloadAndApply
     });
+  }
+
+  /**
+   * Reloads the application so that changes get applied.
+   */
+  reloadAndApply() {
+    const { getCurrentWindow } = require('electron').remote;
+    getCurrentWindow().reload();
   }
 }
 
