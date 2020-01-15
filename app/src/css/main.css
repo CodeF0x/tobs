@@ -69,6 +69,13 @@ aside {
 
 .block {
   margin: 15px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  min-width: 200px;
+}
+
+.block:nth-child(2n) {
+  grid-column: 2/2;
 }
 
 .canvas-container {

@@ -24,7 +24,9 @@ class CPU {
     this._sys
       .cpu()
       .then(info => {
-        document.getElementById('cpu-powerclock').innerText = info.speedmax;
+        document.getElementById(
+          'cpu-powerclock'
+        ).innerText = `${info.speedmax} GHz`;
         document.getElementById('cpu-cores').innerText = info.cores;
       })
       .catch(err => console.error(err));
@@ -113,7 +115,7 @@ class CPU {
       this._sys
         .cpu()
         .then(info => {
-          document.getElementById('cpu-clock').innerText = info.speed;
+          document.getElementById('cpu-clock').innerText = `${info.speed} GHz`;
         })
         .catch(err => console.error(err));
 
