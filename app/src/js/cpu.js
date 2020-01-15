@@ -102,6 +102,10 @@ class CPU {
    */
   update() {
     setInterval(() => {
+      this.updateChart();
+    }, 1000);
+
+    setInterval(() => {
       document.getElementById('cpu-usage').innerText = `(${
         this._newData[this._newData.length - 1]
       }%)`;
@@ -117,10 +121,6 @@ class CPU {
       this._chart.data.labels = this._newLables;
       this._chart.update(0);
     }, Number(this._settings.refreshRate) * 1000);
-
-    setInterval(() => {
-      this.updateChart();
-    }, 1000);
   }
 
   /**
