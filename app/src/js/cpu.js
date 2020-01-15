@@ -1,10 +1,13 @@
 class CPU {
-  constructor() {
+  constructor(settings) {
     this._canvasElement = null;
     this._ctx = null;
     this._chart = null;
+    this._settings = settings;
     this._sys = require('systeminformation');
     this._canvasElement = document.getElementById('cpu-chart');
+    this._newData = [];
+    this._newLables = [];
     this.init();
   }
 
@@ -18,7 +21,13 @@ class CPU {
      */
     this._sys.currentLoad();
 
-    let cpuInfo = null;
+    this._sys
+      .cpu()
+      .then(info => {
+        document.getElementById('cpu-powerclock').innerText = info.speedmax;
+        document.getElementById('cpu-cores').innerText = info.cores;
+      })
+      .catch(err => console.error(err));
 
     this._sys
       .cpu()
@@ -93,17 +102,25 @@ class CPU {
    */
   update() {
     setInterval(() => {
+      document.getElementById('cpu-usage').innerText = `${
+        this._newData[this._newData.length - 1]
+      }`;
+
+      this._sys
+        .cpu()
+        .then(info => {
+          document.getElementById('cpu-clock').innerText = info.speed;
+        })
+        .catch(err => console.error(err));
+
+      this._chart.data.datasets[0].data = this._newData;
+      this._chart.data.labels = this._newLables;
+      this._chart.update(0);
+    }, Number(this._settings.preferences.refreshRate) * 1000);
+
+    setInterval(() => {
       this.updateChart();
     }, 1000);
-
-    this._sys
-      .cpu()
-      .then(info => {
-        document.getElementById('cpu-clock').innerText = info.speed;
-        document.getElementById('cpu-powerclock').innerText = info.speedmax;
-        document.getElementById('cpu-cores').innerText = info.cores;
-      })
-      .catch(err => console.error(err));
   }
 
   /**
@@ -113,21 +130,18 @@ class CPU {
     this._sys
       .currentLoad()
       .then(info => {
-        const data = this._chart.data.datasets[0].data;
+        const data = this._newData;
 
         if (data.length === 50) {
           data.shift();
-          this._chart.data.labels.shift();
+          this._newLables.shift();
         }
 
         const percent = info.currentload.toFixed(0);
 
         data.push(percent);
         // Not shown, but chart.js needs it to update the chart properly
-        this._chart.data.labels.push(percent + '%');
-        this._chart.update();
-
-        document.getElementById('cpu-usage').innerText = `(${percent}%)`;
+        this._newLables.push(percent + '%');
       })
       .catch(err => console.error(err));
   }
