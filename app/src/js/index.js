@@ -5,7 +5,7 @@ import Preferences from './preferences.js';
 document.addEventListener('DOMContentLoaded', () => {
   Alignment.init();
   const settings = new Preferences();
-  new CPU(settings);
+  new CPU(settings.preferences);
   const dragula = require('dragula');
   dragula([...document.getElementsByClassName('container')]).on(
     'drop',

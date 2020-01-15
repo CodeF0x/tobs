@@ -116,7 +116,7 @@ class CPU {
       this._chart.data.datasets[0].data = this._newData;
       this._chart.data.labels = this._newLables;
       this._chart.update(0);
-    }, Number(this._settings.preferences.refreshRate) * 1000);
+    }, Number(this._settings.refreshRate) * 1000);
 
     setInterval(() => {
       this.updateChart();
