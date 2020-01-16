@@ -2,9 +2,9 @@
 
 ## Tobs is a customizable cross-platform system monitor app.
 
-It shows you the most important information of your system in an instant using comprehensible charts.
+It shows you the most important information about your system in an instant using comprehensible charts.
 <br>
-With customizable options like custom refreshrate of the charts, dark- and light mode, drag- and drop alignment of the charts and some more, you can make Tobs your very own experience.
+With customizable options like refreshrate, dark- and light mode, drag- and drop alignment of the charts and some more, you can make Tobs your very own experience.
 
 ### It shows information about your
 
@@ -25,7 +25,7 @@ With customizable options like custom refreshrate of the charts, dark- and light
 
 ### You are able to customize
 
-- refreshrate of charts
+- refreshrate of data
 - information in GiB (Gibibyte) or GB (Gigabyte)
 - dark- and light mode
 - chart layout via drag & drop
