@@ -9,7 +9,11 @@ With customizable options like custom refreshrate of the charts, dark- and light
 ### It shows information about your
 
 - CPU
-  - details will follow
+  - current clock speed
+  - powerclock speed
+  - usage in %
+  - cores (logical)
+  - CPU model and vendor
 - RAM
   - details will follow
 - GPU
