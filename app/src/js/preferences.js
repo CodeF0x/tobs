@@ -85,7 +85,6 @@ class Preferences {
     };
 
     localStorage.setItem('preferences', JSON.stringify(preferences));
-    this.preferences = JSON.parse(localStorage.getItem('preferences'));
 
     this.disableButton();
     this.success('Okay!', 'Your changes got saved and applied.');
