@@ -146,6 +146,13 @@ button:active {
   box-shadow: none;
 }
 
+button#save-settings {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  margin-left: -87px;
+}
+
 .switch {
   position: relative;
   display: inline-block;
