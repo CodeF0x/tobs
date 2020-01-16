@@ -22,7 +22,10 @@
     "electron": "^7.1.5",
     "gulp": "^4.0.2",
     "gulp-typescript": "^6.0.0-alpha.1",
+    "systeminformation": "^4.17.3",
     "typescript": "^3.7.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "sweetalert2": "^9.5.4"
+  }
 }

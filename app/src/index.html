@@ -8,6 +8,7 @@
       http-equiv="Content-Security-Policy"
       content="script-src 'self'; style-src 'unsafe-inline' 'self'; img-src 'self' data:"
     />
+    <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/dark.css" id="color-preference" />
     <link rel="stylesheet" href="../lib/css/all.min.css" />
@@ -25,10 +26,26 @@
     <main id="main">
       <section class="container" id="container-one">
         <section class="container-outer" id="cpu-container">
-          <canvas id="cpu-chart"></canvas>
+          <div class="container-headline">
+            <h3 id="headline-cpu"></h3>
+            <span id="cpu-usage">pending...</span>
+          </div>
+          <div class="canvas-container">
+            <canvas id="cpu-chart"></canvas>
+          </div>
           <section class="container-inner">
-            <div>Usage: <span>4%</span></div>
-            <div>Clock: <span>3,70 GHz</span></div>
+            <div class="block">
+              <div>Clock:</div>
+              <span id="cpu-clock">pending...</span>
+              <div>Baseclock:</div>
+              <span id="cpu-baseclock"></span>
+            </div>
+            <div class="block">
+              <div>Powerclock:</div>
+              <span id="cpu-powerclock"></span>
+              <div>Cores:</div>
+              <span id="cpu-cores"></span>
+            </div>
           </section>
         </section>
       </section>
@@ -72,6 +89,23 @@
           </section>
         </section>
       </section>
+      <div id="settings">
+        <nav class="settings-nav">
+          <h2>Preferences</h2>
+          <i class="fas fa-times"></i>
+        </nav>
+        <section class="settings-inner">
+          <div>
+            <h2>Charts</h2>
+            <label for="refresh-rate"
+              >Chart refresh-rate (in seconds, no decimals)</label
+            ><input type="number" id="refresh-rate" placeholder="10" />
+          </div>
+        </section>
+        <button id="save-settings" class="disabled" disabled>
+          Save changes
+        </button>
+      </div>
     </main>
   </body>
 </html>

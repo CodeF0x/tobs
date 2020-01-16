@@ -1,8 +1,12 @@
 import Alignment from './alignment.js';
+import CPU from './cpu.js';
+import Preferences from './preferences.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   Alignment.init();
-  // Because Typescript and dragula both refuse to work together, good ol' require
+  const settings = new Preferences().preferences;
+  const cpu = new CPU();
+
   const dragula = require('dragula');
   dragula([...document.getElementsByClassName('container')]).on(
     'drop',
@@ -12,4 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
       Alignment.save();
     }
   );
+
+  setInterval(() => {
+    cpu.update();
+  }, Number(settings.refreshRate * 1000));
 });
