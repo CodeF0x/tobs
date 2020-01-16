@@ -1,9 +1,8 @@
 class CPU {
-  constructor(settings) {
+  constructor() {
     this._canvasElement = null;
     this._ctx = null;
     this._chart = null;
-    this._settings = settings;
     this._sys = require('systeminformation');
     this._canvasElement = document.getElementById('cpu-chart');
     this._newData = [];
@@ -24,21 +23,19 @@ class CPU {
     this._sys
       .cpu()
       .then(info => {
-        document.getElementById(
-          'cpu-powerclock'
-        ).innerText = `${info.speedmax} GHz`;
-        document.getElementById('cpu-cores').innerText = info.cores;
-      })
-      .catch(err => console.error(err));
-
-    this._sys
-      .cpu()
-      .then(info => {
         const cpuManufacturer = info.manufacturer;
         const cpuBrand = info.brand;
         document.getElementById(
           'headline-cpu'
         ).innerText = `${cpuManufacturer} ${cpuBrand}`;
+
+        document.getElementById(
+          'cpu-powerclock'
+        ).innerText = `${info.speedmax} GHz`;
+        document.getElementById('cpu-cores').innerText = info.cores;
+        document.getElementById(
+          'cpu-baseclock'
+        ).innerText = `${info.speed} GHz`;
       })
       .catch(err => console.error(err));
 
@@ -96,33 +93,27 @@ class CPU {
         maintainAspectRatio: false
       }
     });
-    this.update();
+
+    setInterval(() => {
+      this.updateChart();
+    }, 1000);
   }
 
   /**
    * Updates infos.
    */
   update() {
-    setInterval(() => {
-      this.updateChart();
-    }, 1000);
+    this._sys.cpuCurrentspeed().then(info => {
+      document.getElementById('cpu-clock').innerText = `${info.avg} GHz`;
+    });
 
-    setInterval(() => {
-      document.getElementById('cpu-usage').innerText = `(${
-        this._newData[this._newData.length - 1]
-      }%)`;
+    document.getElementById('cpu-usage').innerText = `(${
+      this._newData[this._newData.length - 1]
+    }%)`;
 
-      this._sys
-        .cpu()
-        .then(info => {
-          document.getElementById('cpu-clock').innerText = `${info.speed} GHz`;
-        })
-        .catch(err => console.error(err));
-
-      this._chart.data.datasets[0].data = this._newData;
-      this._chart.data.labels = this._newLables;
-      this._chart.update(0);
-    }, Number(this._settings.refreshRate) * 1000);
+    this._chart.data.datasets[0].data = this._newData;
+    this._chart.data.labels = this._newLables;
+    this._chart.update(0);
   }
 
   /**
