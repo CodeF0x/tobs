@@ -6,7 +6,9 @@ class Preferences {
     this.preferences = JSON.parse(localStorage.getItem('preferences')) || {};
     this._settings = document.getElementById('settings');
     this._refreshRate = document.getElementById('refresh-rate');
+    this._animationsCheckbox = document.getElementById('animations');
     this._saveButton = document.getElementById('save-settings');
+    this._showConfirmBox = true; // <- Very ugly way of preventing the toggle switch to fire two confirm boxes in a row when toggling to on and then toggling back to off
     this._swal = require('sweetalert2');
 
     this._refreshRate.addEventListener(
@@ -16,6 +18,11 @@ class Preferences {
     this._refreshRate.addEventListener(
       'change',
       this.updateRefreshrate.bind(this)
+    );
+
+    this._animationsCheckbox.addEventListener(
+      'change',
+      this.toggleAnimations.bind(this)
     );
 
     this._saveButton.addEventListener('click', this.saveSettings.bind(this));
@@ -29,6 +36,7 @@ class Preferences {
       .addEventListener('click', this.openSettings.bind(this));
 
     this._refreshRate.value = this.preferences.refreshRate;
+    this._animationsCheckbox.checked = this.preferences.animations;
   }
 
   /**
@@ -71,11 +79,49 @@ class Preferences {
   }
 
   /**
+   * Enables / disables animations.
+   */
+  toggleAnimations() {
+    const toggle = this._animationsCheckbox;
+    const showBox = this._showConfirmBox;
+
+    // animations are disabled -> user checks button to enable
+    if (toggle.checked && showBox) {
+      this._swal
+        .fire({
+          title: 'Enable animations?',
+          text: 'This might cause some graphical glitches of the charts.',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'I understand'
+        })
+        .then(result => {
+          if (result.value) {
+            this.enableButton();
+            this._showConfirmBox = false;
+          } else {
+            this.disableButton();
+            toggle.checked = false;
+            this._showConfirmBox = true;
+          }
+        });
+      // animations are enabled -> user checks button to disable
+    } else if (!toggle.checked && showBox) {
+      this.enableButton();
+    } else {
+      this.disableButton();
+    }
+  }
+
+  /**
    * Saves preferences to local storage.
    */
   saveSettings() {
     const preferences = {
-      refreshRate: this._refreshRate.value
+      refreshRate: Number(this._refreshRate.value),
+      animations: this._animationsCheckbox.checked
     };
 
     localStorage.setItem('preferences', JSON.stringify(preferences));

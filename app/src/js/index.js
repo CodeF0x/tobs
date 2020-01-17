@@ -4,8 +4,8 @@ import Preferences from './preferences.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   Alignment.init();
-  const settings = new Preferences().preferences;
-  const cpu = new CPU();
+  const preferences = new Preferences().preferences;
+  const cpu = new CPU(preferences.animations);
 
   const dragula = require('dragula');
   dragula([...document.getElementsByClassName('container')]).on(
@@ -19,5 +19,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setInterval(() => {
     cpu.update();
-  }, Number(settings.refreshRate * 1000));
+  }, preferences.refreshRate * 1000);
 });

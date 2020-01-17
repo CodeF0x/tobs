@@ -95,11 +95,18 @@
           <i class="fas fa-times"></i>
         </nav>
         <section class="settings-inner">
+          <h2>Charts</h2>
           <div>
-            <h2>Charts</h2>
             <label for="refresh-rate"
               >Chart refresh-rate (in seconds, no decimals)</label
             ><input type="number" id="refresh-rate" placeholder="10" />
+          </div>
+          <div>
+            <label for="animations">Animations</label>
+            <label class="switch">
+              <input type="checkbox" id="animations" />
+              <span class="slider round"></span>
+            </label>
           </div>
         </section>
         <button id="save-settings" class="disabled" disabled>
