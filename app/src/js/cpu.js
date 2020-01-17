@@ -1,5 +1,5 @@
 class CPU {
-  constructor() {
+  constructor(animations) {
     this._canvasElement = null;
     this._ctx = null;
     this._chart = null;
@@ -7,6 +7,7 @@ class CPU {
     this._canvasElement = document.getElementById('cpu-chart');
     this._newData = [];
     this._newLables = [];
+    this._animations = animations;
     this.init();
   }
 
@@ -113,7 +114,7 @@ class CPU {
 
     this._chart.data.datasets[0].data = this._newData;
     this._chart.data.labels = this._newLables;
-    this._chart.update(0);
+    this._chart.update(this._animations === true ? 1000 : 0);
   }
 
   /**
