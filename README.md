@@ -55,3 +55,4 @@ None, app isn't finished yet.
 | measurements in GiB or GB                 | ❌          | ❌                           |
 | set dark or light mode on the fly         | ❌          | ❌                           |
 | self updating or atleast update assistent | ❌          | ❌                           |
+| enable / disable animated charts          | ✅          | ❌                           |
