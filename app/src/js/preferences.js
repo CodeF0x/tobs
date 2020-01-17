@@ -8,7 +8,6 @@ class Preferences {
     this._refreshRate = document.getElementById('refresh-rate');
     this._saveButton = document.getElementById('save-settings');
     this._swal = require('sweetalert2');
-    this._scrollPosition = null;
 
     this._refreshRate.addEventListener(
       'keyup',
@@ -36,10 +35,6 @@ class Preferences {
    * Opens preferences overlay.
    */
   openSettings() {
-    if (window.scrollY !== 0) {
-      this._scrollPosition = window.scrollY;
-    }
-
     const overlay = this._settings;
     const value = window.getComputedStyle(overlay).display;
     let overflow = document.body.style.overflowY;
@@ -48,10 +43,9 @@ class Preferences {
 
     if (overflow === '' || overflow === 'scroll') {
       document.body.style.overflowY = 'hidden';
-      window.scrollTo(0, 0);
+      overlay.style.top = `${window.scrollY}px`;
     } else {
       document.body.style.overflowY = 'scroll';
-      window.scrollTo(0, this._scrollPosition);
     }
   }
 
