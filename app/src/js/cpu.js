@@ -1,10 +1,9 @@
 class CPU {
   constructor(animations) {
-    this._canvasElement = null;
+    this._canvasElement = document.getElementById('cpu-chart');
     this._ctx = null;
     this._chart = null;
     this._sys = require('systeminformation');
-    this._canvasElement = document.getElementById('cpu-chart');
     this._newData = [];
     this._newLables = [];
     this._animations = animations;
@@ -118,7 +117,7 @@ class CPU {
   }
 
   /**
-   * Populates and updates the chart.
+   * Populates the chart.
    */
   updateChart() {
     this._sys
