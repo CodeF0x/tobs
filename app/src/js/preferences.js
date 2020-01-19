@@ -7,6 +7,7 @@ class Preferences {
     this._settings = document.getElementById('settings');
     this._refreshRate = document.getElementById('refresh-rate');
     this._animationsCheckbox = document.getElementById('animations');
+    this._unitCheckbox = document.getElementById('gb-gib');
     this._saveButton = document.getElementById('save-settings');
     this._showConfirmBox = true; // <- Very ugly way of preventing the toggle switch to fire two confirm boxes in a row when toggling to on and then toggling back to off
     this._swal = require('sweetalert2');
@@ -25,6 +26,8 @@ class Preferences {
       this.toggleAnimations.bind(this)
     );
 
+    this._unitCheckbox.addEventListener('change', this.toggleUnits.bind(this));
+
     this._saveButton.addEventListener('click', this.saveSettings.bind(this));
 
     document
@@ -37,6 +40,7 @@ class Preferences {
 
     this._refreshRate.value = this.preferences.refreshRate;
     this._animationsCheckbox.checked = this.preferences.animations;
+    this._unitCheckbox.checked = this.preferences.useGB;
   }
 
   /**
@@ -116,12 +120,29 @@ class Preferences {
   }
 
   /**
+   * Toggles between GB and GiB.
+   */
+  toggleUnits() {
+    const toggle = this._unitCheckbox;
+    const useGB = this.preferences.useGB;
+
+    if (toggle.checked && !useGB) {
+      this.enableButton();
+    } else if (!toggle.checked && useGB) {
+      this.enableButton();
+    } else {
+      this.disableButton();
+    }
+  }
+
+  /**
    * Saves preferences to local storage.
    */
   saveSettings() {
     const preferences = {
       refreshRate: Number(this._refreshRate.value),
-      animations: this._animationsCheckbox.checked
+      animations: this._animationsCheckbox.checked,
+      useGB: this._unitCheckbox.checked
     };
 
     localStorage.setItem('preferences', JSON.stringify(preferences));

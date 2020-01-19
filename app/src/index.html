@@ -38,13 +38,13 @@
               <div>Clock:</div>
               <span id="cpu-clock">pending...</span>
               <div>Baseclock:</div>
-              <span id="cpu-baseclock"></span>
+              <span id="cpu-baseclock">pending...</span>
             </div>
             <div class="block">
               <div>Powerclock:</div>
-              <span id="cpu-powerclock"></span>
+              <span id="cpu-powerclock">pending...</span>
               <div>Cores:</div>
-              <span id="cpu-cores"></span>
+              <span id="cpu-cores">pending...</span>
             </div>
           </section>
         </section>
@@ -52,10 +52,30 @@
 
       <section class="container" id="container-two">
         <section class="container-outer" id="ram-container">
-          <canvas></canvas>
+          <div class="container-headline">
+            <h3 id="headline-ram"></h3>
+            <span id="ram-usage">pending...</span>
+          </div>
+          <div class="canvas-container">
+            <canvas id="ram-chart"></canvas>
+          </div>
           <section class="container-inner">
-            <div>ram <span>4%</span></div>
-            <div>bla <span>3,70 GHz</span></div>
+            <div class="block">
+              <div>Total:</div>
+              <span id="ram-total">pending...</span>
+              <div>Used:</div>
+              <span id="ram-used">pedning...</span>
+            </div>
+            <div class="block">
+              <div>Free:</div>
+              <div id="ram-free">pending...</div>
+              <div>Clock:</div>
+              <span id="ram-clock">pending...</span>
+            </div>
+            <div class="block">
+              <div>Type:</div>
+              <span id="ram-type">pending...</span>
+            </div>
           </section>
         </section>
       </section>
@@ -105,6 +125,13 @@
             <label for="animations">Animated charts</label>
             <label class="switch">
               <input type="checkbox" id="animations" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div>
+            <label for="gb-gib">Show values in GB (default: GiB)</label>
+            <label class="switch">
+              <input type="checkbox" id="gb-gib" />
               <span class="slider round"></span>
             </label>
           </div>
