@@ -1,41 +1,45 @@
-class CPU {
-  constructor(animations) {
-    this._canvasElement = document.getElementById('cpu-chart');
+class RAM {
+  constructor(useGB, animations) {
+    this._canvasElement = document.getElementById('ram-chart');
     this._ctx = null;
     this._chart = null;
-    this._sys = require('systeminformation');
-    this._newData = [];
-    this._newLables = [];
+    this._factor = useGB ? 1000 : 1024;
     this._animations = animations;
+    this._sys = require('systeminformation');
+    this._newLables = [];
+    this._newData = [];
     this.init();
   }
 
   /**
-   * Does the intial setup of the CPU chart, and other infos.
+   * Does the initial setup of the RAM chart, and other infos.
    */
   init() {
-    /**
-     * To measure CPU load, a period of time is needed (from start of application to end of application)
-     * therefore currentLoad() needs to be called once at startup as a beginning point.
-     */
-    this._sys.currentLoad();
+    this._sys
+      .mem()
+      .then(info => {
+        const factor = this._factor;
+        const totalBytes = info.total;
+        const totalConverted = totalBytes / factor / factor / factor;
+        const prefix = factor === 1024 ? 'GiB' : 'GB';
+
+        document.getElementById(
+          'ram-total'
+        ).innerText = `${totalConverted.toFixed(2)} ${prefix}`;
+      })
+      .catch(err => console.error(err));
 
     this._sys
-      .cpu()
+      .memLayout()
       .then(info => {
-        const cpuManufacturer = info.manufacturer;
-        const cpuBrand = info.brand;
-        document.getElementById(
-          'headline-cpu'
-        ).innerText = `${cpuManufacturer} ${cpuBrand}`;
+        document.getElementById('headline-ram').innerText =
+          info[0].manufacturer;
 
         document.getElementById(
-          'cpu-powerclock'
-        ).innerText = `${info.speedmax} GHz`;
-        document.getElementById('cpu-cores').innerText = info.cores;
-        document.getElementById(
-          'cpu-baseclock'
-        ).innerText = `${info.speed} GHz`;
+          'ram-clock'
+        ).innerText = `${info[0].clockSpeed} MHz`;
+
+        document.getElementById('ram-type').innerText = info[0].type;
       })
       .catch(err => console.error(err));
 
@@ -43,10 +47,10 @@ class CPU {
     this._chart = new Chart(this._ctx, {
       type: 'line',
       data: {
-        labels: ['0%'],
+        label: ['0%'],
         datasets: [
           {
-            label: 'CPU usage in %',
+            label: 'RAM usage in %',
             data: [0],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
@@ -89,9 +93,9 @@ class CPU {
         },
         tooltips: {
           enabled: false
-        },
-        maintainAspectRatio: false
-      }
+        }
+      },
+      maintainAspectRatio: false
     });
 
     setInterval(() => {
@@ -103,13 +107,25 @@ class CPU {
    * Updates infos.
    */
   update() {
-    this._sys.cpuCurrentspeed().then(info => {
-      document.getElementById('cpu-clock').innerText = `${info.avg} GHz`;
-    });
-
-    document.getElementById('cpu-usage').innerText = `(${
+    document.getElementById('ram-usage').innerText = `(${
       this._newData[this._newData.length - 1]
     }%)`;
+
+    this._sys.mem().then(info => {
+      const factor = this._factor;
+      const prefix = factor === 1024 ? 'GiB' : 'GB';
+      const totalConverted = (info.total / factor / factor / factor).toFixed(2);
+      const usedConverted = (info.used / factor / factor / factor).toFixed(2);
+      const freeConverted = (totalConverted - usedConverted).toFixed(2);
+
+      document.getElementById(
+        'ram-used'
+      ).innerText = `${usedConverted} ${prefix}`;
+
+      document.getElementById(
+        'ram-free'
+      ).innerText = `${freeConverted} ${prefix}`;
+    });
 
     this._chart.data.datasets[0].data = this._newData;
     this._chart.data.labels = this._newLables;
@@ -121,17 +137,18 @@ class CPU {
    */
   updateChart() {
     this._sys
-      .currentLoad()
+      .mem()
       .then(info => {
+        const factor = this._factor;
         const data = this._newData;
-
         if (data.length === 50) {
           data.shift();
           this._newLables.shift();
         }
 
-        const percent = info.currentload.toFixed(0);
-
+        const usedConverted = info.used / factor / factor / factor;
+        const totalConverted = info.total / factor / factor / factor;
+        const percent = (usedConverted / (totalConverted / 100)).toFixed(0);
         data.push(percent);
         // Not shown, but chart.js needs it to update the chart properly
         this._newLables.push(percent + '%');
@@ -140,4 +157,4 @@ class CPU {
   }
 }
 
-export default CPU;
+export default RAM;
