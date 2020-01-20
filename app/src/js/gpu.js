@@ -27,6 +27,12 @@ class GPU {
       document.getElementById('gpu-vram').innerText = vram;
 
       document.getElementById('gpu-bus').innerText = gpu.bus;
+
+      document.getElementById('gpu-info-link').addEventListener('click', e => {
+        e.preventDefault();
+
+        require('electron').shell.openExternal(e.target.href);
+      });
     });
   }
 }
