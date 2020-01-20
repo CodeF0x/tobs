@@ -32,8 +32,9 @@ class RAM {
     this._sys
       .memLayout()
       .then(info => {
-        document.getElementById('headline-ram').innerText =
-          info[0].manufacturer;
+        document.getElementById(
+          'headline-ram'
+        ).innerText = `${info[0].manufacturer} ${info[0].partNum}`;
 
         document.getElementById(
           'ram-clock'
@@ -52,22 +53,8 @@ class RAM {
           {
             label: 'RAM usage in %',
             data: [0],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-            ],
+            backgroundColor: ['rgba(0, 102, 255, 0.2)'],
+            borderColor: ['rgba(51, 102, 255, 1)'],
             borderWidth: 1
           }
         ]
