@@ -15,7 +15,12 @@ With customizable options like refreshrate, dark- and light mode, drag- and drop
   - cores (logical)
   - CPU model and vendor
 - RAM
-  - details will follow
+  - usage in %
+  - total
+  - used
+  - free
+  - clock
+  - type
 - GPU
   - details will follow
 - disk(s)
