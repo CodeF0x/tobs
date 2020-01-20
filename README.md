@@ -22,7 +22,9 @@ With customizable options like refreshrate, dark- and light mode, drag- and drop
   - clock
   - type
 - GPU
-  - details will follow
+  - total VRAM
+  - bus
+  - [why not more infos?](https://github.com/CodeF0x/tobs/wiki/Hardly-any-GPU-stats-or-wrong-GPU-stats)
 - disk(s)
   - details will follow
 - network
@@ -47,7 +49,7 @@ None, app isn't finished yet.
 | --------------- | ----------- | ---------------------------- |
 | CPU usage       | ✅          | ❌                           |
 | RAM usage       | ✅          | ❌                           |
-| GPU usage       | ❌          | ❌                           |
+| GPU usage       | ❓          | ❌                           |
 | disk usage      | ❌          | ❌                           |
 | network usage   | ❌          | ❌                           |
 

@@ -78,6 +78,11 @@ aside {
   grid-column: 2/2;
 }
 
+.block-info {
+  display: flex;
+  align-items: center;
+}
+
 .canvas-container {
   position: relative;
   min-height: 400px;
