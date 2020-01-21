@@ -1,4 +1,4 @@
-# Please refer to the bottom of this readme regarding the state of development.
+# Please refer to the bottom of this readme regarding the state of development. This readme is subject to change.
 
 ## Tobs is a customizable cross-platform system monitor app.
 
@@ -9,12 +9,14 @@ With customizable options like refreshrate, dark- and light mode, drag- and drop
 ### It shows information about your
 
 - CPU
+  - CPU name
   - current clock speed
   - powerclock speed
   - usage in %
   - cores (logical)
   - CPU model and vendor
 - RAM
+  - RAM name
   - usage in %
   - total
   - used
@@ -22,6 +24,7 @@ With customizable options like refreshrate, dark- and light mode, drag- and drop
   - clock
   - type
 - GPU
+  - GPU name
   - total VRAM
   - bus
   - [why not more infos?](https://github.com/CodeF0x/tobs/wiki/Hardly-any-GPU-stats-or-wrong-GPU-stats)
@@ -37,9 +40,16 @@ With customizable options like refreshrate, dark- and light mode, drag- and drop
 - dark- and light mode
 - chart layout via drag & drop
 
-### Screenshot
+### Screenshots
 
 None, app isn't finished yet.
+
+### Known issues and drawbacks
+
+- you can't monitor your graphics card with Tobs, as it lacks a proper API to get GPU data. The only information Tobs can tell you about your GPU are:
+  - name
+  - total vram (might also be incorrect)
+  - GPU bus
 
 ## State of development
 
