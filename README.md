@@ -6,7 +6,12 @@ It shows you the most important information about your system in an instant usin
 <br>
 With customizable options like refreshrate, dark- and light mode, drag- and drop alignment of the charts and some more, you can make Tobs your very own experience.
 
-### It shows information about your
+- <a href="#information">data available with Tobs</a>
+- <a href="#customization">customizable options</a>
+- <a href="#screenshots">screenshots</a>
+- <a href="#state-of-development">state of development</a>
+
+<h3 id="information">You can use Tobs to monitor:</h3>
 
 - CPU
   - CPU name
@@ -33,27 +38,27 @@ With customizable options like refreshrate, dark- and light mode, drag- and drop
 - network
   - details will follow
 
-### You are able to customize
+<h3 id="customization">You are able to customize</h3>
 
 - refreshrate of data
 - information in GiB (Gibibyte) or GB (Gigabyte)
 - dark- and light mode
 - chart layout via drag & drop
 
-### Screenshots
+<h3 id="screenshots">Screenshots</h3>
 
 None, app isn't finished yet.
 
-### Known issues and drawbacks
+<h3 id="issues">Known issues and drawbacks</h3>
 
 - you can't monitor your graphics card with Tobs, as it lacks a proper API to get GPU data. The only information Tobs can tell you about your GPU are:
   - name
   - total vram (might also be incorrect)
   - GPU bus
 
-## State of development
+<h2 id="state-of-development">State of development</h2>
 
-## Features
+<h2>Features</h2>
 
 | Planned Feature | Implemented | Working as intended / Tested |
 | --------------- | ----------- | ---------------------------- |
@@ -63,7 +68,7 @@ None, app isn't finished yet.
 | disk usage      | ❌          | ❌                           |
 | network usage   | ❌          | ❌                           |
 
-## Customizable options
+<h2>Customizable options</h2>
 
 | Preference                                | Implemented | Working as intended / Tested |
 | ----------------------------------------- | ----------- | ---------------------------- |
