@@ -36,7 +36,6 @@ class Disk {
         });
 
         diskUsagePerDisk.forEach(disk => {
-          console.log(disk);
           const dataset = {
             data: [
               this.convert(disk.size - disk.used),
@@ -60,18 +59,15 @@ class Disk {
             plugins: {
               datalabels: {
                 formatter: (value, context) => {
-                  return;
-                  let label = '';
+                  const index = context.datasetIndex;
+                  const name = diskUsagePerDisk[context.datasetIndex].name;
 
-                  const name = disk.name;
                   if (!alreadyLabeled.includes(name)) {
                     alreadyLabeled.push(name);
-                    label = name;
+                    return name;
                   } else {
-                    label = '';
+                    return '';
                   }
-                  this._i++;
-                  return label;
                 }
               }
             },
