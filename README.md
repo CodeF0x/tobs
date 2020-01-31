@@ -9,6 +9,7 @@ With customizable options like refreshrate, dark- and light mode, drag- and drop
 - <a href="#information">data available with Tobs</a>
 - <a href="#customization">customizable options</a>
 - <a href="#screenshots">screenshots</a>
+- <a href="#issues">known issues and drawbacks</a>
 - <a href="#state-of-development">state of development</a>
 
 <h3 id="information">You can use Tobs to monitor:</h3>
@@ -55,6 +56,7 @@ None, app isn't finished yet.
   - name
   - total vram (might also be incorrect)
   - GPU bus
+- due to Linux's permission system, there is no direct Linux support right now. Technically, Tobs **should** run on Linux, but with issues (e. g. missing / incorrect data, etc.)
 
 <h2 id="state-of-development">State of development</h2>
 
