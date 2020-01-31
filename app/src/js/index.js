@@ -3,6 +3,7 @@ import CPU from './cpu.js';
 import Preferences from './preferences.js';
 import RAM from './ram.js';
 import GPU from './gpu.js';
+import Disk from './disk.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   Alignment.init();
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cpu = new CPU(preferences.animations);
   const ram = new RAM(preferences.useGB, preferences.animations);
   const gpu = new GPU(preferences.useGB);
+  const disk = new Disk(preferences.useGB);
 
   const dragula = require('dragula');
   dragula([...document.getElementsByClassName('container')]).on(
