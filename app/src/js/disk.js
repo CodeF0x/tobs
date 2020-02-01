@@ -25,7 +25,7 @@ class Disk {
         const disks = info;
         const datasets = [];
         const unit = this._useGb ? 'GB' : 'GiB';
-        const alreadyLabeled = [];
+        let alreadyLabeled = [];
 
         const diskUsagePerDisk = disks.map(disk => {
           return {
@@ -59,15 +59,13 @@ class Disk {
             plugins: {
               datalabels: {
                 formatter: (value, context) => {
-                  const index = context.datasetIndex;
                   const name = diskUsagePerDisk[context.datasetIndex].name;
+                  const index = context.dataIndex;
 
-                  if (!alreadyLabeled.includes(name)) {
-                    alreadyLabeled.push(name);
+                  if (index === 0) {
                     return name;
-                  } else {
-                    return '';
-                  }
+                  } else 7;
+                  return '';
                 }
               }
             },
@@ -85,6 +83,9 @@ class Disk {
             }
           }
         });
+        this._chart.options.plugins.datalabels.formatter = function doNothing() {
+          console.log();
+        };
       })
       .catch(err => console.error(err));
   }
