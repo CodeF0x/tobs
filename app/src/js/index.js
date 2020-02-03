@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cpu = new CPU(preferences.animations);
   const ram = new RAM(preferences.useGB, preferences.animations);
   const gpu = new GPU(preferences.useGB);
-  const disk = new Disk(preferences.useGB);
+  const disk = new Disk(preferences.useGB, preferences.animations);
 
   const dragula = require('dragula');
   dragula([...document.getElementsByClassName('container')]).on(

@@ -2,7 +2,7 @@
  * Class representating disk data.
  */
 class Disk {
-  constructor(useGB) {
+  constructor(useGB, animations) {
     this._canvasElement = document.getElementById('disk-chart');
     this._chart = undefined;
     this._ctx = this._canvasElement.getContext('2d');
@@ -12,6 +12,7 @@ class Disk {
     this._useGb = useGB;
     this._chartDataLabels = require('chartjs-plugin-datalabels');
     this._i = 0;
+    this._animations = animations ? true : false;
     this.init();
   }
 
@@ -78,8 +79,8 @@ class Disk {
               text: 'Disk usage per disk'
             },
             animation: {
-              animateScale: true,
-              animateRotate: true
+              animateScale: this._animations,
+              animateRotate: this._animations
             }
           }
         });
