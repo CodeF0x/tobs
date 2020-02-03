@@ -63,8 +63,9 @@ class Disk {
 
                   if (index === 0) {
                     return name;
-                  } else 7;
-                  return '';
+                  } else {
+                    return '';
+                  }
                 }
               }
             },
