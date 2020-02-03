@@ -69,7 +69,7 @@ None, app isn't finished yet.
 | CPU usage       | ✅          | ❌                           |
 | RAM usage       | ✅          | ❌                           |
 | GPU usage       | ❓          | ❌                           |
-| disk usage      | ❌          | ❌                           |
+| disk usage      | ✅          | ❌                           |
 | network usage   | ❌          | ❌                           |
 
 <h2>Customizable options</h2>
