@@ -35,7 +35,9 @@ With customizable options like refreshrate, dark- and light mode, drag- and drop
   - bus
   - [why not more infos?](https://github.com/CodeF0x/tobs/wiki/Hardly-any-GPU-stats-or-wrong-GPU-stats)
 - disk(s)
-  - details will follow
+  - free space per disk
+  - used space per disk
+  - mounted disks
 - network
   - details will follow
 
