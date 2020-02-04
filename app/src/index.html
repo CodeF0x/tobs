@@ -116,13 +116,30 @@
 
       <section class="container" id="container-five">
         <section class="container-outer" id="network-container">
-          <canvas></canvas>
-          <section class="container-inner">
-            <div>gpu: <span>4%</span></div>
-            <div>Clock: <span>3,70 GHz</span></div>
+          <div class="container-headline">
+            <h3>Default network interface</h3>
+          </div>
+          <div class="canvas-container">
+            <canvas id="network-chart"></canvas>
+          </div>
+          <div class="container-inner">
+            <div class="block">
+              <div>Name:</div>
+              <span id="network-interface-name"></span>
+              <div>IPv4:</div>
+              <span id="ipv4-address"></span>
+            </div>
+            <div class="block">
+              <div>IPv6:</div>
+              <span id="ipv6-address"></span>
+              <div>Mac:</div>
+              <span id="mac-address"></span>
+            </div>
+          </div>
           </section>
         </section>
       </section>
+
       <div id="settings">
         <nav class="settings-nav">
           <h2>Preferences</h2>
