@@ -22,7 +22,7 @@ class Network {
     document.getElementById('ipv4-address').innerText = defaultInterface.ip4;
     document.getElementById('ipv6-address').innerText = defaultInterface.ip6;
     document.getElementById('mac-address').innerText = defaultInterface.mac;
-
+    document.getElementById('network-interface-type').innerText = `(${defaultInterface.type})`;
     
   }
 }
