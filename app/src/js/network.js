@@ -22,11 +22,10 @@ class Network {
      */
     this._sys.networkStats();
 
-
     const networkInterfaces = await this._sys.networkInterfaces();
     const defaultInterfacename = await this._sys.networkInterfaceDefault();
     const defaultInterface = networkInterfaces.filter(
-      networkInterface => networkInterface.ifaceName === defaultInterfacename
+      networkInterface => networkInterface.iface === defaultInterfacename
     )[0];
 
     document.getElementById('network-interface-name').innerText =
@@ -66,7 +65,7 @@ class Network {
               ticks: {
                 beginAtZero: true,
                 stepSize: 10,
-                suggestedMax: 100
+                suggestedMax: defaultInterface.speed
               }
             }
           ],
@@ -106,9 +105,11 @@ class Network {
   /**
    * Populates the chart.
    */
-  updateChart() {
+  async updateChart() {
+    console.log('running');
+    const defaultNetworkInterface = await this._sys.networkInterfaceDefault();
     this._sys
-      .networkStats()
+      .networkStats(defaultNetworkInterface)
       .then(info => {
         const dataUp = this._newDataUp;
         const dataDown = this._newDataDown;
