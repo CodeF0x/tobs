@@ -28,5 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(() => {
     cpu.update();
     ram.update();
+    network.update();
   }, preferences.refreshRate * 1000);
 });
