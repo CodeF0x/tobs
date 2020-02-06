@@ -101,12 +101,18 @@ class Network {
    * Updates the infos.
    */
   update() {
+    const dataDown = this._newDataDown;
+    const dataUp = this._newDataUp;
+
+    document.getElementById('download-speed-second').innerText = `${dataDown[dataDown.length - 1]} MBit/s`;
+    document.getElementById('upload-speed-second').innerText = `${dataUp[dataUp.length - 1]} MBit/s`;
+
     this._chart.data.labels = this._newLablesUp;
 
-    this._chart.data.datasets[0].data = this._newDataUp;
+    this._chart.data.datasets[0].data = dataUp;
     this._chart.data.datasets[0].labels = this._newLablesUp;
 
-    this._chart.data.datasets[1].data = this._newDataDown;
+    this._chart.data.datasets[1].data = dataDown;
     this._chart.data.datasets[1].labels = this._newLablesDown;
 
     this._chart.update(this._animations ? 1000 : 0);
