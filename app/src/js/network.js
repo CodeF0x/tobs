@@ -47,18 +47,26 @@ class Network {
             label: 'Upload in MBit/s',
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgba(255, 99, 132, 1)',
-            data: [0]
+            data: [0],
+            borderWidth: 1
           },
           {
             label: 'Download in MBit/s',
             backgroundColor: 'rgba(255, 200, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            data: [1]
+            borderColor: 'rgba(255, 99, 200, 132)',
+            data: [1],
+            borderWidth: 1
           }
-        ],
-        borderWidth: 1
+        ]
       },
       options: {
+        plugins: {
+          datalabels: {
+            formatter: (value, context) => {
+              return '';
+            }
+          }
+        },
         scales: {
           yAxes: [
             {
@@ -93,11 +101,13 @@ class Network {
    * Updates the infos.
    */
   update() {
+    this._chart.data.labels = this._newLablesUp;
+
     this._chart.data.datasets[0].data = this._newDataUp;
     this._chart.data.datasets[0].labels = this._newLablesUp;
 
     this._chart.data.datasets[1].data = this._newDataDown;
-    this._chart.data.datasets[1].data = this._newLablesDown;
+    this._chart.data.datasets[1].labels = this._newLablesDown;
 
     this._chart.update(this._animations ? 1000 : 0);
   }
@@ -106,11 +116,11 @@ class Network {
    * Populates the chart.
    */
   async updateChart() {
-    console.log('running');
     const defaultNetworkInterface = await this._sys.networkInterfaceDefault();
     this._sys
       .networkStats(defaultNetworkInterface)
       .then(info => {
+        info = info[0];
         const dataUp = this._newDataUp;
         const dataDown = this._newDataDown;
 
