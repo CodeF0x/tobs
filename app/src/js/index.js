@@ -4,6 +4,7 @@ import Preferences from './preferences.js';
 import RAM from './ram.js';
 import GPU from './gpu.js';
 import Disk from './disk.js';
+import Network from './network.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   Alignment.init();
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ram = new RAM(preferences.useGB, preferences.animations);
   const gpu = new GPU(preferences.useGB);
   const disk = new Disk(preferences.useGB, preferences.animations);
+  const network = new Network(preferences.animations);
 
   const dragula = require('dragula');
   dragula([...document.getElementsByClassName('container')]).on(
@@ -26,5 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(() => {
     cpu.update();
     ram.update();
+    network.update();
   }, preferences.refreshRate * 1000);
 });

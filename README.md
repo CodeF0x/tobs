@@ -38,8 +38,13 @@ With customizable options like refreshrate, dark- and light mode, drag- and drop
   - free space per disk
   - used space per disk
   - mounted disks
-- network
-  - details will follow
+- network (**default network interface**)
+  - current upload speed in MBit (Megabit)
+  - current download speed in MBit (Megabit)
+  - name
+  - ipv4 address
+  - ipv6 address
+  - mac address
 
 <h3 id="customization">You are able to customize</h3>
 
