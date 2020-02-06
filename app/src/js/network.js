@@ -45,15 +45,15 @@ class Network {
         datasets: [
           {
             label: 'Upload in MBit/s',
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgba(255, 99, 132, 1)'],
             data: [0],
             borderWidth: 1
           },
           {
             label: 'Download in MBit/s',
-            backgroundColor: 'rgba(255, 200, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 200, 132)',
+            backgroundColor: ['rgba(255, 200, 132, 0.2)'],
+            borderColor: ['rgba(255, 99, 200, 132)'],
             data: [1],
             borderWidth: 1
           }
@@ -127,13 +127,15 @@ class Network {
         if (dataUp.length === 50) {
           dataUp.shift();
           this._newLablesUp.shift();
-        } else if (dataDown.length === 50) {
+        } 
+        
+        if (dataDown.length === 50) {
           dataDown.shift();
           this._newLablesDown.shift();
         }
 
-        const mbitsDown = ((info.rx_sec * 8) / 1000).toFixed(2);
-        const mbitsUp = ((info.tx_sec * 8) / 1000).toFixed(2);
+        const mbitsDown = ((info.rx_sec * 8) / 1000 / 1000).toFixed(2);
+        const mbitsUp = ((info.tx_sec * 8) / 1000 / 1000).toFixed(2);
 
         dataUp.push(mbitsUp);
         this._newLablesUp.push(mbitsUp + ' MBits/s');
