@@ -75,7 +75,7 @@ None, app isn't finished yet.
 | RAM usage       | ✅          | ❌                           |
 | GPU usage       | ❓          | ❌                           |
 | disk usage      | ✅          | ❌                           |
-| network usage   | ❌          | ❌                           |
+| network usage   | ✅          | ❌                           |
 
 <h2>Customizable options</h2>
 
