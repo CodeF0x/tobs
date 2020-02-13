@@ -166,7 +166,7 @@ After that, use *npm start* to launch TOBS.
 | chart layout via drag & drop              | ✅          | ❌                          |
 | custom refreshrate of charts              | ✅          | ❌                          |
 | measurements in GiB or GB                 | ✅          | ❌                          |
-| set dark or light mode on the fly         | ❌          | ❌                          |
+| set dark or light mode on the fly         | ✅          | ❌                          |
 | self updating or atleast update assistent | ❌          | ❌                          |
 | enable / disable animated charts          | ✅          | ❌                          |
 
