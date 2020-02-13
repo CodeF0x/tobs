@@ -5,6 +5,7 @@ import RAM from './ram.js';
 import GPU from './gpu.js';
 import Disk from './disk.js';
 import Network from './network.js';
+import Theme from './theme.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   Alignment.init();
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const gpu = new GPU(preferences.useGB);
   const disk = new Disk(preferences.useGB, preferences.animations);
   const network = new Network(preferences.animations);
+  const theme = new Theme(preferences.theme);
 
   const dragula = require('dragula');
   dragula([...document.getElementsByClassName('container')]).on(
