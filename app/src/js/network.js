@@ -48,7 +48,8 @@ class Network {
             backgroundColor: ['rgba(255, 99, 132, 0.2)'],
             borderColor: ['rgba(255, 99, 132, 1)'],
             data: [0],
-            borderWidth: 1
+            borderWidth: 1,
+            borderDash: [1, 2]
           },
           {
             label: 'Download in MBit/s',
