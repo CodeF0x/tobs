@@ -5,7 +5,11 @@ body {
 aside,
 #main,
 #settings {
-  background: #272343;
+  background: rgb(28, 28, 30);
+}
+
+.container {
+  background: rgb(33, 33, 35);
 }
 
 .fas {
