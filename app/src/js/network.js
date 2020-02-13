@@ -4,10 +4,10 @@ class Network {
     this._ctx = null;
     this._chart = null;
     this._sys = require('systeminformation');
-    this._newDataDown = [];
-    this._newLablesDown = [];
-    this._newDataUp = [];
-    this._newLablesUp = [];
+    this._newDataDown = new Array(50).fill(0);
+    this._newLablesDown = [...this._newDataDown];
+    this._newDataUp = [...this._newDataDown];
+    this._newLablesUp = [...this._newDataDown];
     this._animations = animations;
     this.init();
   }
@@ -52,8 +52,8 @@ class Network {
           },
           {
             label: 'Download in MBit/s',
-            backgroundColor: ['rgba(255, 200, 132, 0.2)'],
-            borderColor: ['rgba(255, 99, 200, 132)'],
+            backgroundColor: 'rgba(255, 200, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 200, 132)',
             data: [1],
             borderWidth: 1
           }
@@ -88,7 +88,12 @@ class Network {
         tooltips: {
           enabled: false
         },
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        elements: {
+          point: {
+            radius: 0
+          }
+        }
       }
     });
 
