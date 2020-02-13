@@ -6,8 +6,8 @@ class RAM {
     this._factor = useGB ? 1000 : 1024;
     this._animations = animations;
     this._sys = require('systeminformation');
-    this._newLables = [];
-    this._newData = [];
+    this._newData = new Array(50).fill(0);
+    this._newLables = [...this._newData];
     this.init();
   }
 
@@ -53,8 +53,8 @@ class RAM {
           {
             label: 'RAM usage in %',
             data: [0],
-            backgroundColor: ['rgba(0, 102, 255, 0.2)'],
-            borderColor: ['rgba(51, 102, 255, 1)'],
+            backgroundColor: 'rgba(0, 102, 255, 0.2)',
+            borderColor: 'rgba(51, 102, 255, 1)',
             borderWidth: 1
           }
         ]
@@ -80,9 +80,14 @@ class RAM {
         },
         tooltips: {
           enabled: false
+        },
+        maintainAspectRatio: false,
+        elements: {
+          point: {
+            radius: 0
+          }
         }
-      },
-      maintainAspectRatio: false
+      }
     });
 
     setInterval(() => {

@@ -1,0 +1,49 @@
+body {
+  color: black;
+}
+
+aside,
+#main,
+#settings {
+  background: rgb(251, 251, 255);
+}
+
+.container {
+  background: rgb(242, 242, 247);
+}
+
+.fas {
+  color: rgb(58, 58, 60);
+}
+
+button {
+  background: rgb(90, 200, 250);
+  box-shadow: 0 5px 0 rgb(65, 145, 183);
+  border-bottom: 2px solid rgb(65, 145, 183);
+  color: black;
+}
+
+button:hover {
+  background: rgb(26, 181, 251);
+  box-shadow: 0 4px 1px rgb(0, 128, 189);
+  border-bottom: 2px solid rgb(0, 128, 189);
+  cursor: pointer;
+}
+
+.disabled {
+  background: #b3aeae;
+  border-bottom: 2px solid #888585;
+  box-shadow: 0 5px 0 #888585;
+}
+
+.disabled:hover {
+  background: #b3aeae;
+  border-bottom: 2px solid #888585;
+  box-shadow: 0 5px 0 #888585;
+  cursor: auto;
+}
+
+a,
+a:active a:visited {
+  color: #000000;
+}

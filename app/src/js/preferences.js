@@ -3,11 +3,19 @@
  */
 class Preferences {
   constructor() {
-    this.preferences = JSON.parse(localStorage.getItem('preferences')) || {};
+    this.preferences = JSON.parse(localStorage.getItem('preferences')) || {
+      refreshRate: 1,
+      animations: false,
+      useGB: false,
+      theme: 'dark'
+    };
+
     this._settings = document.getElementById('settings');
     this._refreshRate = document.getElementById('refresh-rate');
     this._animationsCheckbox = document.getElementById('animations');
     this._unitCheckbox = document.getElementById('gb-gib');
+    this._darkTheme = document.getElementById('dark-theme');
+    this._lightTheme = document.getElementById('light-theme');
     this._saveButton = document.getElementById('save-settings');
     this._showConfirmBox = true; // <- Very ugly way of preventing the toggle switch to fire two confirm boxes in a row when toggling to on and then toggling back to off
     this._swal = require('sweetalert2');
@@ -38,9 +46,18 @@ class Preferences {
       .querySelector('.fas.fa-times')
       .addEventListener('click', this.openSettings.bind(this));
 
+    this._darkTheme.addEventListener('change', this.toggleTheme.bind(this));
+    this._lightTheme.addEventListener('change', this.toggleTheme.bind(this));
+
     this._refreshRate.value = this.preferences.refreshRate;
     this._animationsCheckbox.checked = this.preferences.animations;
     this._unitCheckbox.checked = this.preferences.useGB;
+
+    if (this.preferences.theme === 'dark') {
+      this._darkTheme.checked = true;
+    } else {
+      this._lightTheme.checked = true;
+    }
   }
 
   /**
@@ -142,13 +159,31 @@ class Preferences {
     const preferences = {
       refreshRate: Number(this._refreshRate.value),
       animations: this._animationsCheckbox.checked,
-      useGB: this._unitCheckbox.checked
+      useGB: this._unitCheckbox.checked,
+      theme: this._darkTheme.checked ? 'dark' : 'light'
     };
 
     localStorage.setItem('preferences', JSON.stringify(preferences));
 
     this.disableButton();
     this.success('Okay!', 'Your changes got saved and applied.');
+  }
+
+  /**
+   * Toggles between dark- and light theme.
+   */
+  toggleTheme() {
+    const theme = this.preferences.theme;
+    
+    if (theme === 'dark' && this._darkTheme.checked) {
+      this.disableButton();
+    } else if(theme === 'dark' && this._lightTheme.checked) {
+      this.enableButton();
+    } else if(theme === 'light' && this._lightTheme.checked) {
+      this.disableButton();
+    } else if(theme === 'light' && this._darkTheme.checked) {
+      this.enableButton();
+    }
   }
 
   /**
