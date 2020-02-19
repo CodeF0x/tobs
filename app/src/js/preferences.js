@@ -58,6 +58,8 @@ class Preferences {
     } else {
       this._lightTheme.checked = true;
     }
+
+    this.checkForUpdate();
   }
 
   /**
@@ -174,14 +176,14 @@ class Preferences {
    */
   toggleTheme() {
     const theme = this.preferences.theme;
-    
+
     if (theme === 'dark' && this._darkTheme.checked) {
       this.disableButton();
-    } else if(theme === 'dark' && this._lightTheme.checked) {
+    } else if (theme === 'dark' && this._lightTheme.checked) {
       this.enableButton();
-    } else if(theme === 'light' && this._lightTheme.checked) {
+    } else if (theme === 'light' && this._lightTheme.checked) {
       this.disableButton();
-    } else if(theme === 'light' && this._darkTheme.checked) {
+    } else if (theme === 'light' && this._darkTheme.checked) {
       this.enableButton();
     }
   }
@@ -230,6 +232,21 @@ class Preferences {
   reloadAndApply() {
     const { getCurrentWindow } = require('electron').remote;
     getCurrentWindow().reload();
+  }
+
+  /**
+   * Checks if there's an update available.
+   */
+  async checkForUpdate() {
+    try {
+      const latest = require('github-latest-release');
+      const version = require('electron').remote.app.getVersion();
+
+      const newestVersion = await latest('CodeF0x', 'tobs');
+      console.log(newestVersion);
+    } catch (e) {
+      throw new Error('Could not get latest release from GitHub.');
+    }
   }
 }
 
