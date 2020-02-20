@@ -59,7 +59,7 @@ class Preferences {
       this._lightTheme.checked = true;
     }
 
-    this.checkForUpdate();
+    this.checkForUpdateAndNotify();
   }
 
   /**
@@ -237,13 +237,26 @@ class Preferences {
   /**
    * Checks if there's an update available.
    */
-  async checkForUpdate() {
+  async checkForUpdateAndNotify() {
     try {
       const latest = require('github-latest-release');
       const version = require('electron').remote.app.getVersion();
 
       const newestVersion = await latest('CodeF0x', 'tobs');
-      console.log(newestVersion);
+
+      if (`v${version}` !== newestVersion.name) {
+        if (this.preferences.ignoredRelease === newestVersion.name) {
+          return;
+        } else {
+          this._swal.fire({
+            title: title,
+            text: message,
+            icon: 'info',
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Skip this version'
+          });
+        }
+      }
     } catch (e) {
       throw new Error('Could not get latest release from GitHub.');
     }
