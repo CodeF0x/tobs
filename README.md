@@ -156,13 +156,13 @@ After that, use _npm start_ to launch TOBS.
 
 ### Features:
 
-| Planned Feature | Implemented | Working as intended / Tested |
-| --------------- | ----------- | ---------------------------- |
-| CPU usage       | ✅          | ❌                           |
-| RAM usage       | ✅          | ❌                           |
-| GPU usage       | ❓          | ❌                           |
-| disk usage      | ✅          | ❌                           |
-| network usage   | ✅          | ❌                           |
+| Planned Feature | Implemented                                                                                   | Working as intended / Tested |
+| --------------- | --------------------------------------------------------------------------------------------- | ---------------------------- |
+| CPU usage       | ✅                                                                                            | ❌                           |
+| RAM usage       | ✅                                                                                            | ❌                           |
+| GPU usage       | ❓ [Learn more](https://github.com/CodeF0x/tobs/wiki/Hardly-any-GPU-stats-or-wrong-GPU-stats) | ❌                           |
+| disk usage      | ✅                                                                                            | ❌                           |
+| network usage   | ✅                                                                                            | ❌                           |
 
 ### Customizing:
 
