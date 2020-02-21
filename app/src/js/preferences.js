@@ -248,13 +248,23 @@ class Preferences {
         if (this.preferences.ignoredRelease === newestVersion.name) {
           return;
         } else {
-          this._swal.fire({
-            title: title,
-            text: message,
-            icon: 'info',
-            confirmButtonText: 'OK',
-            cancelButtonText: 'Skip this version'
-          });
+          this._swal
+            .fire({
+              title: 'New version available!',
+              text:
+                'A new version of Tobs is available. Do you want to download it?',
+              icon: 'info',
+              confirmButtonText: 'Yes',
+              showCancelButton: true,
+              cancelButtonText: 'Not now'
+            })
+            .then(result => {
+              if (result.value) {
+                require('electron').shell.openExternal(
+                  'https://github.com/CodeF0x/tobs/releases/latest'
+                );
+              }
+            });
         }
       }
     } catch (e) {
