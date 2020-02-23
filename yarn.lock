@@ -610,6 +610,11 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
+custom-electron-titlebar@^3.2.2-hotfix62:
+  version "3.2.2-hotfix62"
+  resolved "https://registry.yarnpkg.com/custom-electron-titlebar/-/custom-electron-titlebar-3.2.2-hotfix62.tgz#94b908f0f2bf812e4f65447a26b93b88f7a76088"
+  integrity sha512-Kh86xAolkCpqj4AD/H4HcR2pEtxUyIHzMzqwkxqZkSqE7R9tRfN8G3fVpiiNIAJlX8rbN3VwxaoHi1B1sSMn/Q==
+
 custom-event@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/custom-event/-/custom-event-1.0.0.tgz#2e4628be19dc4b214b5c02630c5971e811618062"

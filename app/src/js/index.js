@@ -6,6 +6,7 @@ import GPU from './gpu.js';
 import Disk from './disk.js';
 import Network from './network.js';
 import Theme from './theme.js';
+import Titlebar from './titlebar.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   Alignment.init();
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const disk = new Disk(preferences.useGB, preferences.animations);
   const network = new Network(preferences.animations);
   const theme = new Theme(preferences.theme);
+  const titlebar = new Titlebar();
 
   const dragula = require('dragula');
   dragula([...document.getElementsByClassName('container')]).on(
