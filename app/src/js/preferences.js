@@ -68,15 +68,16 @@ class Preferences {
   openSettings() {
     const overlay = this._settings;
     const value = window.getComputedStyle(overlay).display;
-    let overflow = document.body.style.overflowY;
+    const container = document.querySelector('.container-after-titlebar');
+    let overflow = container.style.overflowY;
 
     overlay.style.display = value === 'none' ? 'block' : 'none';
 
     if (overflow === '' || overflow === 'scroll') {
-      document.body.style.overflowY = 'hidden';
-      overlay.style.top = `${window.scrollY}px`;
+      container.style.overflowY = 'hidden';
+      overlay.style.top = `${container.scrollTop}px`;
     } else {
-      document.body.style.overflowY = 'scroll';
+      container.style.overflowY = 'scroll';
     }
   }
 

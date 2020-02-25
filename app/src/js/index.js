@@ -11,13 +11,13 @@ import Titlebar from './titlebar.js';
 document.addEventListener('DOMContentLoaded', () => {
   Alignment.init();
   const preferences = new Preferences().preferences;
+  const titlebar = new Titlebar(preferences.theme);
   const cpu = new CPU(preferences.animations);
   const ram = new RAM(preferences.useGB, preferences.animations);
   const gpu = new GPU(preferences.useGB);
   const disk = new Disk(preferences.useGB, preferences.animations);
   const network = new Network(preferences.animations);
   const theme = new Theme(preferences.theme);
-  const titlebar = new Titlebar();
 
   const dragula = require('dragula');
   dragula([...document.getElementsByClassName('container')]).on(

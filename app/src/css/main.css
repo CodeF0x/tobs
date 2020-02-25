@@ -19,7 +19,7 @@ aside {
 }
 
 #settings-button {
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 
 #settings-button:hover {
@@ -90,7 +90,7 @@ aside {
 }
 
 #settings {
-  height: 100vh;
+  height: 97vh;
   width: calc(100% - 60px);
   display: none;
   z-index: 3;
