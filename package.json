@@ -1,8 +1,8 @@
 {
   "name": "tobs",
   "productName": "tobs",
-  "version": "1.0.0",
-  "description": "Tobs is a customizable cross-platform system health monitor app.",
+  "version": "0.1.0",
+  "description": "Tobs is a nice litle system health monitor app for Mac and Windows.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ./app/main.js"
@@ -26,7 +26,8 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-terser": "^1.2.0",
     "systeminformation": "^4.17.3",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.3",
+    "electron-builder": "^22.3.2"
   },
   "dependencies": {
     "chart.js": "^2.9.3",

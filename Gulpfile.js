@@ -4,7 +4,7 @@ const cleanCSS = require('gulp-clean-css');
 const htmlmin = require('gulp-htmlmin');
 
 gulp.task('copy', () => {
-  gulp.src('app/src/img/icons/icon.png').pipe(gulp.dest('build/src/img/icons'));
+  gulp.src('app/src/img/icons/**/*').pipe(gulp.dest('build/src/img/icons'));
 
   return gulp.src('app/lib/**/*').pipe(gulp.dest('build/lib'));
 });
