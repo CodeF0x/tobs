@@ -1,5 +1,6 @@
 {
   "name": "tobs",
+  "productName": "tobs",
   "version": "1.0.0",
   "description": "Tobs is a customizable cross-platform system health monitor app.",
   "scripts": {
@@ -28,6 +29,8 @@
   "dependencies": {
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
+    "custom-electron-titlebar": "^3.2.2-hotfix62",
+    "electron-is-dev": "^1.1.0",
     "github-latest-release": "^0.1.1",
     "node-fetch": "^2.6.0",
     "sweetalert2": "^9.5.4"

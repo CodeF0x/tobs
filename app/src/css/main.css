@@ -19,7 +19,7 @@ aside {
 }
 
 #settings-button {
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 
 #settings-button:hover {
@@ -90,7 +90,12 @@ aside {
 }
 
 #settings {
-  height: 100vh;
+  /**
+  * With a height of 95vh the button is rather high, but
+  * fits nice on Windows and that's fine for now. Will 
+  * get changed with a stable release 
+  */
+  height: 95vh;
   width: calc(100% - 60px);
   display: none;
   z-index: 3;

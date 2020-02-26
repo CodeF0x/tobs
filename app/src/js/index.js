@@ -6,10 +6,12 @@ import GPU from './gpu.js';
 import Disk from './disk.js';
 import Network from './network.js';
 import Theme from './theme.js';
+import Titlebar from './titlebar.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   Alignment.init();
   const preferences = new Preferences().preferences;
+  const titlebar = new Titlebar(preferences.theme);
   const cpu = new CPU(preferences.animations);
   const ram = new RAM(preferences.useGB, preferences.animations);
   const gpu = new GPU(preferences.useGB);
