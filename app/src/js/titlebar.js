@@ -33,8 +33,6 @@ class Titlebar {
 
     if (isDev) {
       const menu = new Menu();
-      let mainItem = undefined;
-      let secondaryItem = undefined;
       const config = {
         label: 'Help',
         submenu: [
@@ -46,7 +44,9 @@ class Titlebar {
               )
           }
         ]
-      }
+      };
+      let mainItem = new MenuItem(config);
+      let secondaryItem = undefined;
 
       if (process.platform === 'darwin') {
         mainItem = new MenuItem({
