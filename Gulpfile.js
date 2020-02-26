@@ -1,32 +1,38 @@
-/**
- * This file currently does nothing and is a left-over that will be rewritten once a pipeline is needed.
- */
-
 const gulp = require('gulp');
-const ts = require('gulp-typescript');
+const terser = require('gulp-terser');
+const cleanCSS = require('gulp-clean-css');
+const htmlmin = require('gulp-htmlmin');
 
-gulp.task('compile', () => {
-  return gulp
-    .src(['app/**/*.ts'])
-    .pipe(
-      ts({
-        noImplicitAny: true,
-        moduleResolution: 'node',
-        module: 'es6',
-        target: 'es6'
-      })
-    )
-    .pipe(gulp.dest('build/'));
-});
-
-// Only copy files that are NOT .ts or .js files
 gulp.task('copy', () => {
-  const filesToMove = [
-    'app/src/index.html',
-    'app/lib/**/*',
-    'app/src/css/**/*'
-  ];
-  return gulp.src(filesToMove, { base: './app' }).pipe(gulp.dest('build/'));
+  gulp.src('app/src/img/icons/icon.png').pipe(gulp.dest('build/src/img/icons'));
+
+  return gulp.src('app/lib/**/*').pipe(gulp.dest('build/lib'));
 });
 
-gulp.task('build', gulp.series('compile', 'copy'));
+gulp.task('minify-js', () => {
+  gulp
+    .src('app/src/**/*.js')
+    .pipe(terser())
+    .pipe(gulp.dest('build/src'));
+
+  return gulp
+    .src('app/main.js')
+    .pipe(terser())
+    .pipe(gulp.dest('build'));
+});
+
+gulp.task('minify-css', () => {
+  return gulp
+    .src('app/src/**/*.css')
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('build/src'));
+});
+
+gulp.task('minify-html', () => {
+  return gulp
+    .src('app/src/index.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('build/src'));
+})
+
+gulp.task('compile', gulp.series('copy', 'minify-js', 'minify-css', 'minify-html'));
