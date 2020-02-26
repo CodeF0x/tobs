@@ -31,7 +31,7 @@ class Titlebar {
       'settings'
     ).style.paddingTop = document.querySelector('.titlebar').style.height;
 
-    if (isDev) {
+    if (!isDev) {
       const menu = new Menu();
       const config = {
         label: 'Help',
