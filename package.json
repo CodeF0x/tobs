@@ -1,5 +1,6 @@
 {
   "name": "tobs",
+  "productName": "tobs",
   "version": "1.0.0",
   "description": "Tobs is a customizable cross-platform system health monitor app.",
   "scripts": {
