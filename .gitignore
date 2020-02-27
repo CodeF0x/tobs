@@ -1,4 +1,7 @@
 node_modules/*
 build/*
+!build/package.json
+!build/package-lock.json
 yarn-error.log
 .DS_Store
+release-builds/*

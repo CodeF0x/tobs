@@ -4,15 +4,17 @@
   "version": "0.1.0",
   "description": "Tobs is a nice litle system health monitor app for Mac and Windows.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ./app/main.js",
-    "postinstall": "electron-builder install-app-deps"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CodeF0x/tobs.git"
   },
-  "author": "Tobias \"CodeF0x\" Oettl",
+  "author": {
+    "name": "Tobias \"CodeF0x\" Oettl",
+    "email": "contact@codef0x.dev",
+    "url": "https://codef0x.dev"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/CodeF0x/tobs/issues"
@@ -22,14 +24,13 @@
     "@types/dragula": "^2.1.34",
     "dragula": "^3.7.2",
     "electron": "^7.1.5",
-    "electron-builder": "^22.3.2",
     "gulp": "^4.0.2",
-    "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.2.0",
     "gulp-htmlmin": "^5.0.1",
     "gulp-terser": "^1.2.0",
     "systeminformation": "^4.17.3",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.3",
+    "electron-builder": "^22.3.2"
   },
   "dependencies": {
     "chart.js": "^2.9.3",
@@ -40,29 +41,5 @@
     "node-fetch": "^2.6.0",
     "sweetalert2": "^9.5.4"
   },
-  "build": {
-    "directories": {
-      "app": "build",
-      "output": "release-builds",
-      "buildResources": "src/img/icons"
-    },
-    "dmg": {
-      "contents": [
-        {
-          "x": 120,
-          "y": 230
-        },
-        {
-          "x": 400,
-          "y": 230,
-          "type": "link",
-          "path": "/Applications"
-        }
-      ]
-    },
-    "win": {
-      "target": "msi",
-      "icon": "src/img/icons/icon.ico"
-    }
-  }
+  "main": "main.js"
 }
