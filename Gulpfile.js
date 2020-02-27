@@ -37,24 +37,12 @@ gulp.task('minify-html', () => {
     .pipe(gulp.dest('build/src'));
 });
 
-gulp.task('install', cb => {
-  gulp
-    .src('node_modules', {read: false})
-    .pipe(clean());
-
-  return exec('yarn', (error, stdout, stderr) => {
-    console.log(stdout);
-    console.error(stderr);
-    cb(error);
-  });
-});
-
 gulp.task('build', cb => {
-  return exec('electron-builder --mac --win', (error, stdout, stderr) => {
+  return exec('electron-builder', (error, stdout, stderr) => {
     console.log(stdout);
-    console.error(stderr);
+    console.log(stderr);
     cb(error);
   });
 });
 
-gulp.task('compile', gulp.series('install', 'copy', 'minify-js', 'minify-css', 'minify-html', 'build'));
+gulp.task('compile', gulp.series('copy', 'minify-js', 'minify-css', 'minify-html', 'build'));
