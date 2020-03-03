@@ -9,7 +9,6 @@ app.on('ready', () => {
     frame: false
   });
   window.loadFile('src/index.html');
-  window.webContents.openDevTools();
 });
 
 app.on('window-all-closed', () => app.quit());

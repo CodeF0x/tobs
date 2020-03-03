@@ -16,7 +16,6 @@
   "homepage": "https://github.com/CodeF0x/tobs#readme",
   "devDependencies": {
     "@types/dragula": "^2.1.34",
-    "dragula": "^3.7.2",
     "electron": "^7.1.5",
     "electron-builder": "^22.3.2",
     "gulp": "^4.0.2",
@@ -30,11 +29,12 @@
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
     "custom-electron-titlebar": "^3.2.2-hotfix62",
+    "dragula": "^3.7.2",
     "electron-is-dev": "^1.1.0",
     "github-latest-release": "^0.1.1",
     "node-fetch": "^2.6.0",
     "sweetalert2": "^9.5.4",
-    "systeminformation": "^4.22.3"
+    "systeminformation": "^4.22.4"
   },
   "build": {
     "directories": {
