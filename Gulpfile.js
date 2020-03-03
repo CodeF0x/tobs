@@ -6,7 +6,7 @@ const clean = require('gulp-clean');
 const { exec } = require('child_process');
 
 gulp.task('copy', () => {
-  gulp.src('app/src/img/icons/**/*').pipe(gulp.dest('build/src/img/icons'));
+  gulp.src('app/src/img/icons/**/*').pipe(gulp.dest('build'));
 
   return gulp.src('app/lib/**/*').pipe(gulp.dest('build/lib'));
 });
@@ -33,7 +33,7 @@ gulp.task('minify-css', () => {
 gulp.task('minify-html', () => {
   return gulp
     .src('app/src/index.html')
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest('build/src'));
 });
 
@@ -45,4 +45,7 @@ gulp.task('build', cb => {
   });
 });
 
-gulp.task('compile', gulp.series('copy', 'minify-js', 'minify-css', 'minify-html', 'build'));
+gulp.task(
+  'compile',
+  gulp.series('copy', 'minify-js', 'minify-css', 'minify-html', 'build')
+);

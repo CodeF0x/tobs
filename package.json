@@ -40,7 +40,7 @@
     "directories": {
       "app": "build",
       "output": "release-builds",
-      "buildResources": "build/src/img/icons"
+      "buildResources": "build"
     },
     "dmg": {
       "contents": [
