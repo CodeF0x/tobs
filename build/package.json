@@ -1,7 +1,7 @@
 {
   "name": "tobs",
   "productName": "Tobs",
-  "version": "0.1.0",
+  "version": "0.1.0-beta",
   "description": "Tobs is a nice litle system health monitor app for Mac and Windows.",
   "scripts": {
     "start": "electron ."

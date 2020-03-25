@@ -7,6 +7,7 @@ const { exec } = require('child_process');
 
 gulp.task('copy', () => {
   gulp.src('app/src/img/icons/**/*').pipe(gulp.dest('build'));
+  gulp.src('app/src/img/icons/icon.png').pipe(gulp.dest('build/src/img/icons/'))
 
   return gulp.src('app/lib/**/*').pipe(gulp.dest('build/lib'));
 });
