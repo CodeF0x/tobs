@@ -15,8 +15,8 @@
   },
   "homepage": "https://github.com/CodeF0x/tobs#readme",
   "devDependencies": {
-    "@types/dragula": "^2.1.34",
-    "electron": "^7.1.5",
+    "@types/dragula": "^3.7.0",
+    "electron": "^8.2.0",
     "electron-builder": "^22.3.2",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
