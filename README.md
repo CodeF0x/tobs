@@ -118,9 +118,9 @@ _Note: This data applies only to the default interface_
 **This is what TOBS looks like in action**
 
 <div align="center">
-<img width="350" src="https://i.imgur.com/qgolzY9.png"> <img width="350" src="https://i.imgur.com/QReH5Yz.png"><br>
-<img width="350" src="https://i.imgur.com/M31glsz.png"> <img width="350" src="https://i.imgur.com/ypLn8GR.png"><br>
-<img width="350" src="https://i.imgur.com/LPDdMZx.png">
+<img width="350" src="https://i.imgur.com/wdw5FiW.png"> <img width="350" src="https://i.imgur.com/u63PkPu.png"><br>
+<img width="350" src="https://i.imgur.com/KTek1hF.png"> <img width="350" src="https://i.imgur.com/5acTzHd.png"><br>
+<img width="350" src="https://i.imgur.com/hqvxfZp.png">
 </div>
 <br>
 <hr>
