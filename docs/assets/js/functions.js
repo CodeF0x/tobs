@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const os = navigator.platform.startsWith('Win') ? 'Windows' : 'Mac';
-    const { tag_name, assets } = await await (await fetch('https://api.github.com/repos/CodeF0x/tobs/releases/latest')).json();
+    // TODO change link when next non-prelease comes out
+    const { tag_name, assets } = await await (await fetch('https://api.github.com/repos/CodeF0x/tobs/releases/24169408')).json();
 
     const latestVersion = document.getElementsByClassName('latest-version');
 
