@@ -32,7 +32,7 @@
     "dragula": "^3.7.2",
     "electron-is-dev": "^1.1.0",
     "github-latest-release": "^0.1.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "sweetalert2": "^9.5.4",
     "systeminformation": "^4.22.4"
   },
